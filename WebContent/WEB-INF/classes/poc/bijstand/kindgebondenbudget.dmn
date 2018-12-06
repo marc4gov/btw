@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_03e4rba" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="maxtoeslag" name="Max toeslag">
+    <extensionElements>
+      <biodi:bounds x="20" y="228" width="180" height="80" />
+      <biodi:edge source="InputData_1syhffg">
+        <biodi:waypoints x="459" y="383" />
+        <biodi:waypoints x="365" y="316" />
+      </biodi:edge>
+      <biodi:edge source="kinderen">
+        <biodi:waypoints x="310" y="385" />
+        <biodi:waypoints x="134" y="308" />
+      </biodi:edge>
+      <biodi:edge source="alleen">
+        <biodi:waypoints x="110" y="380" />
+        <biodi:waypoints x="102" y="308" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_1syhffg" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kinderen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#alleen" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_03r1hzb">
+      <input id="InputClause_00ynhub" label="Alleenstaande?">
+        <inputExpression id="LiteralExpression_0qnnvh2" typeRef="boolean">
+          <text>alleen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0rsv5yr" label="Aantal kinderen">
+        <inputExpression id="LiteralExpression_10zz1ku" typeRef="integer" expressionLanguage="Groovy">
+          <text>kinderen.length</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_05qyzwh" label="Max Toeslag" name="maxtoeslag" typeRef="double" />
+      <rule id="DecisionRule_06m7r7g">
+        <inputEntry id="UnaryTests_0ocepxn">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aay21p">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_135moem">
+          <text>4253</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s60eql">
+        <inputEntry id="UnaryTests_09g78ad">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hhnmos">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03adbhe">
+          <text>5230</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aj70ua">
+        <inputEntry id="UnaryTests_0phc88s">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b7jqta">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_198aenf">
+          <text>5518</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qe3vwl">
+        <inputEntry id="UnaryTests_0861t16">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y9vs8e">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p1346t">
+          <text>5518</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cu919i">
+        <inputEntry id="UnaryTests_1rjpv1n">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jiide3">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mhgd7d">
+          <text>1152</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hkyrgt">
+        <inputEntry id="UnaryTests_1f6fsaf">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xmej0z">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09ek025">
+          <text>2129</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xvpqhk">
+        <inputEntry id="UnaryTests_1oaghep">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w8ydp0">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tqf90g">
+          <text>2417</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02qg2ou">
+        <inputEntry id="UnaryTests_0uttfxz">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12u8une">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1przi9m">
+          <text>2417</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="kinderen" name="Kinderen">
+    <extensionElements>
+      <biodi:bounds x="270" y="385" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="kinderen4plus" name="Kinderen &#62;= 4">
+    <extensionElements>
+      <biodi:bounds x="250" y="230" width="180" height="80" />
+      <biodi:edge source="InputData_1syhffg">
+        <biodi:waypoints x="470" y="383" />
+        <biodi:waypoints x="612" y="317" />
+      </biodi:edge>
+      <biodi:edge source="kinderen">
+        <biodi:waypoints x="361" y="385" />
+        <biodi:waypoints x="305" y="310" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1suuv7s" name="kinderen4plus" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_1syhffg" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kinderen" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0jo4mkx" expressionLanguage="groovy">
+      <text>kinderen.length &gt;= 4 ? (kinderen.length - 3)*288 : 0</text>
+    </literalExpression>
+  </decision>
+  <decision id="toeslag" name="Stap 1: toeslag bedrag">
+    <extensionElements>
+      <biodi:bounds x="270" y="68" width="180" height="80" />
+      <biodi:edge source="maxtoeslag">
+        <biodi:waypoints x="151" y="228" />
+        <biodi:waypoints x="337" y="148" />
+      </biodi:edge>
+      <biodi:edge source="kinderen4plus">
+        <biodi:waypoints x="303" y="230" />
+        <biodi:waypoints x="406" y="148" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0zgavbm" name="toeslag" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#maxtoeslag" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#kinderen4plus" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0dngo6k" expressionLanguage="groovy">
+      <text>maxtoeslag + kinderen4plus</text>
+    </literalExpression>
+  </decision>
+  <decision id="verhoogmaxbedrag" name="Stap2: Verhoog Max Bedrag">
+    <extensionElements>
+      <biodi:bounds x="494" y="228" width="180" height="80" />
+      <biodi:edge source="kinderen">
+        <biodi:waypoints x="395" y="404" />
+        <biodi:waypoints x="494" y="271" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1rd9z5m" name="verhoogmaxbedrag" typeRef="integer" />
+    <informationRequirement>
+      <requiredInput href="#kinderen" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_03u0fko" expressionLanguage="groovy">
+      <text>def sum = 0
+for ( i in kinderen ) {
+    if (i&gt;=12 &amp;&amp; i&lt;=15) {
+      sum += 236
+    } else if (i==16 || i==17) {
+      sum += 421
+    } else {
+      sum += 0
+    }
+}
+return sum</text>
+    </literalExpression>
+  </decision>
+  <inputData id="inkomen" name="Inkomen">
+    <extensionElements>
+      <biodi:bounds x="460" y="381" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="vermindermaxbedrag" name="Stap 4: Verminder max bedrag">
+    <extensionElements>
+      <biodi:bounds x="653" y="344" width="180" height="80" />
+      <biodi:edge source="inkomen">
+        <biodi:waypoints x="585" y="403" />
+        <biodi:waypoints x="653" y="403" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1q9c0ix" name="vermindermaxbedrag" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#inkomen" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1fgfg3r" expressionLanguage="groovy">
+      <text>bedrag = 0
+if (inkomen &gt; 20451) {
+  bedrag = 0.0675 * (inkomen - 20451)
+}
+bedrag</text>
+    </literalExpression>
+  </decision>
+  <decision id="kindgebondenbudget" name="Kindgebondenbudget">
+    <extensionElements>
+      <biodi:bounds x="567" y="61" width="180" height="80" />
+      <biodi:edge source="toeslag">
+        <biodi:waypoints x="450" y="101" />
+        <biodi:waypoints x="567" y="109" />
+      </biodi:edge>
+      <biodi:edge source="vermindermaxbedrag">
+        <biodi:waypoints x="754" y="344" />
+        <biodi:waypoints x="700" y="141" />
+      </biodi:edge>
+      <biodi:edge source="verhoogmaxbedrag">
+        <biodi:waypoints x="606" y="228" />
+        <biodi:waypoints x="655" y="141" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0r5juan" name="kindgebondenbudget" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#toeslag" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#vermindermaxbedrag" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#verhoogmaxbedrag" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1mvp4fm" expressionLanguage="groovy">
+      <text>toeslag + verhoogmaxbedrag - vermindermaxbedrag</text>
+    </literalExpression>
+  </decision>
+  <inputData id="alleen" name="Allenstaand?">
+    <extensionElements>
+      <biodi:bounds x="50" y="380" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
