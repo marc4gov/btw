@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1a717v5" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="parameters" name="Inkomenstabel">
+    <extensionElements>
+      <biodi:bounds x="179" y="92" width="180" height="80" />
+      <biodi:edge source="inkomen">
+        <biodi:waypoints x="117" y="237" />
+        <biodi:waypoints x="238" y="172" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#inkomen" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Inkomen">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>inkomen</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Eerste Kind" name="kind1" typeRef="double" />
+      <output id="OutputClause_0wydrwn" label="Tweede en volgende Kind" name="kind2ev" typeRef="double" />
+      <rule id="DecisionRule_1x0zww1">
+        <inputEntry id="UnaryTests_16r8j78">
+          <text>&lt;=19433</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n2m35y">
+          <text>0.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_158f4vf">
+          <text>0.96</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xipdbm">
+        <inputEntry id="UnaryTests_0dsn7d5">
+          <text>[19434..20728]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cu23u1">
+          <text>0.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yp0mvr">
+          <text>0.96</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w5kjlm">
+        <inputEntry id="UnaryTests_048t1i7">
+          <text>[20729..22020]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p5zpst">
+          <text>0.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1293wk0">
+          <text>0.96</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mgra5r">
+        <inputEntry id="UnaryTests_0hemkid">
+          <text>[22021..23315]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yp7ot5">
+          <text>0.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1com5ps">
+          <text>0.96</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kevcfw">
+        <inputEntry id="UnaryTests_1aqdngb">
+          <text>[23316..24610]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07llwk1">
+          <text>0.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kq3gc0">
+          <text>0.96</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0szksp0">
+        <inputEntry id="UnaryTests_0hb19tf">
+          <text>[24611..25903]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wv3zb6">
+          <text>0.956</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ku92t6">
+          <text>0.957</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ctk2h1">
+        <inputEntry id="UnaryTests_11u2kym">
+          <text>[25904..27197]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tkr4mm">
+          <text>0.945</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1blbzhn">
+          <text>0.955</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1umqmju">
+        <inputEntry id="UnaryTests_0f9uffz">
+          <text>[27198..28487]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hcesyf">
+          <text>0.935</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lsdr06">
+          <text>0.953</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qzzm0r">
+        <inputEntry id="UnaryTests_11dcz8v">
+          <text>[28488..29879]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0adlfgb">
+          <text>0.926</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yz6oq4">
+          <text>0.951</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rn3kzt">
+        <inputEntry id="UnaryTests_1ntxy6w">
+          <text>[29880..31269]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x6na9l">
+          <text>0.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pl3qi6">
+          <text>0.950</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1a3ckme">
+        <inputEntry id="UnaryTests_03cnkzk">
+          <text>[31270..32662]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06wpmkk">
+          <text>0.91</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18ltuv6">
+          <text>0.948</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ixd5cx">
+        <inputEntry id="UnaryTests_17c5acs">
+          <text>[32663..34053]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16ygykl">
+          <text>0.905</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bkfdw5">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nwmsu1">
+        <inputEntry id="UnaryTests_0ncn61o">
+          <text>[34054..35447]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1exypn7">
+          <text>0.897</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12kibqn">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0huwvnb">
+        <inputEntry id="UnaryTests_1fr0d73">
+          <text>[35448..36838]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wyo1vu">
+          <text>0.889</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05le3iz">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wrxdr0">
+        <inputEntry id="UnaryTests_1t7ntdr">
+          <text>[36839..38262]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_039jlem">
+          <text>0.883</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wfkacr">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cwve5b">
+        <inputEntry id="UnaryTests_0oo64ey">
+          <text>[38263..39689]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_084esv3">
+          <text>0.875</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jdmif0">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15ziw88">
+        <inputEntry id="UnaryTests_13ksvmi">
+          <text>[39690..41116]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s7zx4u">
+          <text>0.868</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03agsgw">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00wscja">
+        <inputEntry id="UnaryTests_1ke4tbf">
+          <text>[41117..42542]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bhfoyu">
+          <text>0.861</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r7k5ok">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c6t3l8">
+        <inputEntry id="UnaryTests_0k95avx">
+          <text>[42543..43971]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1chh11c">
+          <text>0.852</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17o3yky">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pz1rw9">
+        <inputEntry id="UnaryTests_1ar5pdx">
+          <text>[43972..45398]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hleh0b">
+          <text>0.847</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16x3kam">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07b9wet">
+        <inputEntry id="UnaryTests_1b67vbu">
+          <text>[45399..46824]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kg6cdf">
+          <text>0.839</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iw978z">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gag1ar">
+        <inputEntry id="UnaryTests_151t2rf">
+          <text>[46825..48251]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b4vysy">
+          <text>0.833</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_002lx6u">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xldzyq">
+        <inputEntry id="UnaryTests_1rh8kgr">
+          <text>[48252..49810]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e5nbq2">
+          <text>0.824</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_138rn02">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m6h444">
+        <inputEntry id="UnaryTests_0spkb4f">
+          <text>[49811..52868]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r4cl6z">
+          <text>0.809</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dg3ie6">
+          <text>0.946</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09kclml">
+        <inputEntry id="UnaryTests_0fha8r5">
+          <text>[52869..55924]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f1ydn1">
+          <text>0.801</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ssn4d3">
+          <text>0.942</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xmmzvt">
+        <inputEntry id="UnaryTests_05f8b6m">
+          <text>[55925..58982]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dw6xa2">
+          <text>0.790</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ji828w">
+          <text>0.936</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_053rksu">
+        <inputEntry id="UnaryTests_1wa8w28">
+          <text>[58983..62041]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_137noan">
+          <text>0.768</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f1mt66">
+          <text>0.932</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vo08fx">
+        <inputEntry id="UnaryTests_1q7i7mj">
+          <text>[62042..65097]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gbgogp">
+          <text>0.745</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qw02wg">
+          <text>0.929</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vage56">
+        <inputEntry id="UnaryTests_140wcau">
+          <text>[65098..68156]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uo8ej1">
+          <text>0.723</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02rsgco">
+          <text>0.922</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vz0ozj">
+        <inputEntry id="UnaryTests_0mlvebj">
+          <text>[68157..71213]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f7zcc5">
+          <text>0.699</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tsoy9j">
+          <text>0.917</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ytlsc2">
+        <inputEntry id="UnaryTests_1skadu7">
+          <text>[71214..74271]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jjbhon">
+          <text>0.676</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01smkh0">
+          <text>0.912</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00lar0h">
+        <inputEntry id="UnaryTests_06weoxm">
+          <text>[74272..77331]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fhisxs">
+          <text>0.654</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1218719">
+          <text>0.905</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0syhw4i">
+        <inputEntry id="UnaryTests_1b5bwuh">
+          <text>[77332..80387]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mujgpi">
+          <text>0.631</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18as3m3">
+          <text>0.90</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nmvehe">
+        <inputEntry id="UnaryTests_0unbxut">
+          <text>[80388..83447]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0shqy2h">
+          <text>0.609</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iosgqc">
+          <text>0.896</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wwkh7c">
+        <inputEntry id="UnaryTests_19zk67a">
+          <text>[83448..86504]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a25wxk">
+          <text>0.584</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_173388b">
+          <text>0.893</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03fsu58">
+        <inputEntry id="UnaryTests_1c891oy">
+          <text>[86505..89560]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pavwsb">
+          <text>0.562</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bnvg8r">
+          <text>0.886</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="maxuurprijs" name="Max Uurprijs">
+    <extensionElements>
+      <biodi:bounds x="223" y="332" width="180" height="80" />
+      <biodi:edge source="gastouder">
+        <biodi:waypoints x="275" y="469" />
+        <biodi:waypoints x="307" y="412" />
+      </biodi:edge>
+      <biodi:edge source="dagopvang">
+        <biodi:waypoints x="404" y="472" />
+        <biodi:waypoints x="348" y="412" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#gastouder" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#dagopvang" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_18ln086">
+      <input id="InputClause_1rta2l8" label="Dagopvang?">
+        <inputExpression id="LiteralExpression_09yg4p6" typeRef="boolean">
+          <text>dagopvang</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1xal8rw" label="Gastouder?">
+        <inputExpression id="LiteralExpression_01qh7aw" typeRef="boolean">
+          <text>gastouder</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_13sa5os" label="Max Uurprijs" name="maxuurprijs" typeRef="double" />
+      <rule id="DecisionRule_1irdxqq">
+        <inputEntry id="UnaryTests_0dnkvw3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10gpm4n">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kc8khx">
+          <text>7.45</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p7qaw7">
+        <inputEntry id="UnaryTests_01qf18i">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jo06ig">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wilpse">
+          <text>6.95</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0txa66c">
+        <inputEntry id="UnaryTests_06lyxrn">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lam9n7">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dn5koi">
+          <text>5.91</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vyte80">
+        <inputEntry id="UnaryTests_01qyla1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0avx5sc">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_125y8pd">
+          <text>5.91</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="uurprijs" name="uurprijs">
+    <extensionElements>
+      <biodi:bounds x="37" y="359" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="dagopvang" name="Dagopvang?">
+    <extensionElements>
+      <biodi:bounds x="363" y="472" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="rekenuurprijs" name="Stap 1: &#10;Reken Uurprijs">
+    <extensionElements>
+      <biodi:bounds x="234" y="222" width="180" height="80" />
+      <biodi:edge source="uurprijs">
+        <biodi:waypoints x="100" y="359" />
+        <biodi:waypoints x="338" y="302" />
+      </biodi:edge>
+      <biodi:edge source="maxuurprijs">
+        <biodi:waypoints x="398" y="332" />
+        <biodi:waypoints x="239" y="302" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1ld3dh7" name="rekenuurprijs" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#uurprijs" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#maxuurprijs" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0psgxha" expressionLanguage="groovy">
+      <text>Math.min(maxuurprijs, uurprijs)</text>
+    </literalExpression>
+  </decision>
+  <inputData id="gastouder" name="Gastouder?">
+    <extensionElements>
+      <biodi:bounds x="206" y="469" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="werkuren" name="Aantal werkuren per week">
+    <extensionElements>
+      <biodi:bounds x="806" y="475" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="maxopvanguren" name="Max Opvanguren">
+    <extensionElements>
+      <biodi:bounds x="457" y="346" width="180" height="80" />
+      <biodi:edge source="dagopvang">
+        <biodi:waypoints x="469" y="472" />
+        <biodi:waypoints x="473" y="426" />
+      </biodi:edge>
+      <biodi:edge source="werkurenpermaand">
+        <biodi:waypoints x="625" y="460" />
+        <biodi:waypoints x="597" y="426" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_11tm39g" name="maxopvanguren" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#dagopvang" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#werkurenpermaand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1djj0rp" expressionLanguage="groovy">
+      <text>dagopvang ? (werkurenpermaand * 1.4) : (werkurenpermaand * 0.7)</text>
+    </literalExpression>
+  </decision>
+  <decision id="opvanguren" name="Stap 2: &#10;Opvanguren">
+    <extensionElements>
+      <biodi:bounds x="454" y="224" width="180" height="80" />
+      <biodi:edge source="maxopvanguren">
+        <biodi:waypoints x="580" y="346" />
+        <biodi:waypoints x="511" y="304" />
+      </biodi:edge>
+      <biodi:edge source="opvanguren_werkelijk">
+        <biodi:waypoints x="717" y="361" />
+        <biodi:waypoints x="634" y="301" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0p44smk" name="opvanguren" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#maxopvanguren" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#opvanguren_werkelijk" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_19m28la" expressionLanguage="groovy">
+      <text>Math.min(230, Math.min(maxopvanguren, opvanguren_werkelijk))</text>
+    </literalExpression>
+  </decision>
+  <decision id="opvangkosten" name="Stap 3: &#10;Opvangkosten">
+    <extensionElements>
+      <biodi:bounds x="403" y="94" width="180" height="80" />
+      <biodi:edge source="opvanguren">
+        <biodi:waypoints x="498" y="224" />
+        <biodi:waypoints x="539" y="174" />
+      </biodi:edge>
+      <biodi:edge source="rekenuurprijs">
+        <biodi:waypoints x="391" y="222" />
+        <biodi:waypoints x="471" y="174" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0negsiy" name="opvangkosten" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#opvanguren" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#rekenuurprijs" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0e4nkwh" expressionLanguage="groovy">
+      <text>opvanguren * rekenuurprijs</text>
+    </literalExpression>
+  </decision>
+  <inputData id="inkomen" name="Stap 4: Toetsingsinkomen">
+    <extensionElements>
+      <biodi:bounds x="40" y="237" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="toeslagKind1" name="Stap 5: Kinderopvangtoeslag 1e kind">
+    <extensionElements>
+      <biodi:bounds x="180" y="-53" width="180" height="80" />
+      <biodi:edge source="opvangkosten">
+        <biodi:waypoints x="491" y="94" />
+        <biodi:waypoints x="300" y="27" />
+      </biodi:edge>
+      <biodi:edge source="parameters">
+        <biodi:waypoints x="262" y="92" />
+        <biodi:waypoints x="250" y="27" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0uyqyyq" name="toeslagKind1" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#opvangkosten" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#parameters" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0z5jvwt" expressionLanguage="groovy">
+      <text>opvangkosten * kind1</text>
+    </literalExpression>
+  </decision>
+  <decision id="toeslagKind2ev" name="Stap 6: &#10;Kinderopvangtoeslag 2e kind&#10;en volgende">
+    <extensionElements>
+      <biodi:bounds x="394" y="-45" width="180" height="80" />
+      <biodi:edge source="opvangkosten">
+        <biodi:waypoints x="524" y="94" />
+        <biodi:waypoints x="465" y="35" />
+      </biodi:edge>
+      <biodi:edge source="parameters">
+        <biodi:waypoints x="331" y="92" />
+        <biodi:waypoints x="419" y="35" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1eya1ct" name="toeslagKind2ev" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#opvangkosten" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#parameters" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1r2xny4" expressionLanguage="groovy">
+      <text>opvangkosten * kind2ev</text>
+    </literalExpression>
+  </decision>
+  <inputData id="aantalkinderen" name="Aantal kinderen">
+    <extensionElements>
+      <biodi:bounds x="519" y="-119" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="kinderopvangtoeslag" name="Stap 7:&#10;Kinderopvangtoeslag">
+    <extensionElements>
+      <biodi:bounds x="280" y="-223" width="180" height="80" />
+      <biodi:edge source="toeslagKind1">
+        <biodi:waypoints x="291" y="-53" />
+        <biodi:waypoints x="340" y="-143" />
+      </biodi:edge>
+      <biodi:edge source="toeslagKind2ev">
+        <biodi:waypoints x="457" y="-45" />
+        <biodi:waypoints x="391" y="-143" />
+      </biodi:edge>
+      <biodi:edge source="kinderen">
+        <biodi:waypoints x="519" y="-119" />
+        <biodi:waypoints x="451" y="-143" />
+      </biodi:edge>
+      <biodi:edge source="aantalkinderen">
+        <biodi:waypoints x="542" y="-119" />
+        <biodi:waypoints x="460" y="-166" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1rjl2lz" name="kinderopvangtoeslag" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#toeslagKind1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#toeslagKind2ev" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kinderen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#aantalkinderen" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1b3xkp5" expressionLanguage="groovy">
+      <text>toeslagKind1 + (aantalkinderen - 1) * toeslagKind2ev</text>
+    </literalExpression>
+  </decision>
+  <inputData id="opvanguren_werkelijk" name="Opvanguren werkelijk">
+    <extensionElements>
+      <biodi:bounds x="686" y="361" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="werkurenpermaand" name="Werkuren per maand">
+    <extensionElements>
+      <biodi:bounds x="568" y="460" width="180" height="80" />
+      <biodi:edge source="werkuren">
+        <biodi:waypoints x="806" y="501" />
+        <biodi:waypoints x="748" y="503" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_031shcf" name="werkurenpermaand" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#werkuren" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_15x1exq" expressionLanguage="groovy">
+      <text>(werkuren * 52) / 12</text>
+    </literalExpression>
+  </decision>
+</definitions>

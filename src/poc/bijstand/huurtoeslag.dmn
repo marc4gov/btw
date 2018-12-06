@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_0rk6xl4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="rechtophuurtoeslag" name="Huurtoeslag - recht">
+    <extensionElements>
+      <biodi:bounds x="817" y="105" width="180" height="80" />
+      <biodi:edge source="huishouden">
+        <biodi:waypoints x="897" y="61" />
+        <biodi:waypoints x="848" y="105" />
+      </biodi:edge>
+      <biodi:edge source="vermogen">
+        <biodi:waypoints x="735" y="190" />
+        <biodi:waypoints x="825" y="185" />
+      </biodi:edge>
+      <biodi:edge source="rekeninkomen">
+        <biodi:waypoints x="362" y="111" />
+        <biodi:waypoints x="817" y="148" />
+      </biodi:edge>
+      <biodi:edge source="parameters">
+        <biodi:waypoints x="653" y="66" />
+        <biodi:waypoints x="817" y="125" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#huishouden" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#vermogen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekeninkomen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#parameters" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Vermogen">
+        <inputExpression id="inputExpression_1" typeRef="long">
+          <text>vermogen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0l2jwc0" label="Huishouden">
+        <inputExpression id="LiteralExpression_0vlo6ul" typeRef="string">
+          <text>huishouden</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1gq26bx" label="Rekeninkomen &#62; Doelgroepengrens?">
+        <inputExpression id="LiteralExpression_0g8fqc0" typeRef="boolean" expressionLanguage="Groovy">
+          <text>rekeninkomen &gt; doelgroep</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Recht op huurtoeslag?" name="rechtophuurtoeslag" typeRef="boolean" />
+      <rule id="DecisionRule_1ci51g6">
+        <inputEntry id="UnaryTests_0psp2da">
+          <text>&gt; 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12azcxa">
+          <text>"EP", "EP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0evhe8p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0puw3ib">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w4wf7g">
+        <inputEntry id="UnaryTests_1tp8seo">
+          <text>&gt; 60000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10a0obh">
+          <text>"MP", "MP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1863zza">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cyw2to">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09ysmb5">
+        <inputEntry id="UnaryTests_0mrk5do">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qok2lm">
+          <text>"EP", "EP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vspjuj">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xt096x">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0z8en3s">
+        <inputEntry id="UnaryTests_076xirw">
+          <text>&lt;= 60000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08gbqdo">
+          <text>"MP", "MP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f3nftk">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g9ctfm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i7rikj">
+        <inputEntry id="UnaryTests_0u991zw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17i2jq4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s117xh">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k2s6f0">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="huurgrens" name="Huurgrens">
+    <extensionElements>
+      <biodi:bounds x="1127" y="-6" width="180" height="80" />
+      <biodi:edge source="InputData_0qlytux">
+        <biodi:waypoints x="1201" y="-163" />
+        <biodi:waypoints x="1239" y="-132" />
+      </biodi:edge>
+      <biodi:edge source="handicap">
+        <biodi:waypoints x="1261" y="-102" />
+        <biodi:waypoints x="1142" y="-6" />
+      </biodi:edge>
+      <biodi:edge source="kind">
+        <biodi:waypoints x="1320" y="128" />
+        <biodi:waypoints x="1261" y="74" />
+      </biodi:edge>
+      <biodi:edge source="leeftijd">
+        <biodi:waypoints x="1162" y="129" />
+        <biodi:waypoints x="1200" y="74" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0qlytux" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#handicap" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kind" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#leeftijd" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1smsmg5" hitPolicy="FIRST">
+      <input id="InputClause_07o25uq" label="Leeftijd">
+        <inputExpression id="LiteralExpression_1r1rsxg" typeRef="integer">
+          <text>leeftijd</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_03jhzfi" label="Kind?">
+        <inputExpression id="LiteralExpression_0knlo2q" typeRef="boolean">
+          <text>kind</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_02b0nat" label="Gehandicapt?">
+        <inputExpression id="LiteralExpression_0ywp5km" typeRef="boolean">
+          <text>handicap</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1mf5nw9" label="Huurgrens" name="huurgrens" typeRef="double" />
+      <rule id="DecisionRule_07mbb3f">
+        <inputEntry id="UnaryTests_1iyye1q">
+          <text>&gt;=23</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fwpsln">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lsyzwt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nde2eo">
+          <text>710.68</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12wp0rv">
+        <inputEntry id="UnaryTests_1ss7soo">
+          <text>&lt;23</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e4lvoo">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_177gddv">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jysaf6">
+          <text>710.68</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c0zgkc">
+        <inputEntry id="UnaryTests_0u8k1lo">
+          <text>&lt;23</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_011550c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jrguxv">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bb13ic">
+          <text>710.68</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gmpmjq">
+        <inputEntry id="UnaryTests_06g9z8e">
+          <text>&lt;23</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00lykrj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f8fmo4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lcopq9">
+          <text>417.34</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="rekeninkomen" name="Rekeninkomen">
+    <extensionElements>
+      <biodi:bounds x="237" y="80" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="huishouden" name="Huishouden">
+    <extensionElements>
+      <biodi:bounds x="797" y="16" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="aftopping" name="Aftoppingsgrens">
+    <extensionElements>
+      <biodi:bounds x="763" y="-203" width="180" height="80" />
+      <biodi:edge source="InputData_0qatxfh">
+        <biodi:waypoints x="601" y="180" />
+        <biodi:waypoints x="553" y="136" />
+      </biodi:edge>
+      <biodi:edge source="huishouden">
+        <biodi:waypoints x="871" y="16" />
+        <biodi:waypoints x="898" y="-123" />
+      </biodi:edge>
+      <biodi:edge source="aantalpersonen">
+        <biodi:waypoints x="730" y="-78" />
+        <biodi:waypoints x="835" y="-123" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0qatxfh" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#huishouden" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#aantalpersonen" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1t8zb89" hitPolicy="FIRST">
+      <input id="InputClause_15qo284" label="Huishouden">
+        <inputExpression id="LiteralExpression_0vkq0qf" typeRef="string">
+          <text>huishouden</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16s8xhs" label="Aantal personen">
+        <inputExpression id="LiteralExpression_0t0r0je" typeRef="integer">
+          <text>aantalpersonen</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0zabq9k" label="Aftoppingsgrens" name="aftopping" typeRef="double" />
+      <rule id="DecisionRule_16nnlzn">
+        <inputEntry id="UnaryTests_0pmu7v5">
+          <text>"EP"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s22n47">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16tunn3">
+          <text>597.30</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tjnmag">
+        <inputEntry id="UnaryTests_12fzhhh">
+          <text>"MP"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15hy1lu">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16dzxsv">
+          <text>597.30</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o1l2kj">
+        <inputEntry id="UnaryTests_0hlaiml">
+          <text>"EP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00g71ph">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_183icdm">
+          <text>597.30</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ypks4e">
+        <inputEntry id="UnaryTests_0viue5c">
+          <text>"MP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vv9xpb">
+          <text>&lt;=2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0hcs8eo">
+          <text>597.30</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1anqmch">
+        <inputEntry id="UnaryTests_0o7mghu">
+          <text>"MP"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ab7xr">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ivfa0u">
+          <text>640.14</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pj7lja">
+        <inputEntry id="UnaryTests_1fys0en">
+          <text>"MP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14tvamg">
+          <text>&gt;2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uxnoaj">
+          <text>640.14</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="aantalpersonen" name="Aantal personen">
+    <extensionElements>
+      <biodi:bounds x="667" y="-77" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="parameters" name="Parameters 2018">
+    <extensionElements>
+      <biodi:bounds x="473" y="-7" width="180" height="80" />
+      <biodi:edge source="huishouden">
+        <biodi:waypoints x="797" y="26" />
+        <biodi:waypoints x="653" y="42" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#huishouden" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0hrusns">
+      <input id="InputClause_13y4f3j" label="Huishouden">
+        <inputExpression id="LiteralExpression_0g4a7py" typeRef="string">
+          <text>huishouden</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0xt2riq" label="Factor a" name="factora" typeRef="double" />
+      <output id="OutputClause_11g5ubb" label="Factor b" name="factorb" typeRef="double" />
+      <output id="OutputClause_0egeat2" label="Minimum Inkomen Grens" name="minimuminkomen" typeRef="double" />
+      <output id="OutputClause_0zk978r" label="Doelgroepgrens" name="doelgroep" typeRef="double" />
+      <output id="OutputClause_123lk36" label="Taakstellingsbedrag" name="taakstelling" typeRef="double" />
+      <output id="OutputClause_0fumnrt" label="Minimumnormhuur" name="minimumnormhuur" typeRef="double" />
+      <output id="OutputClause_0znw0jw" label="Minimumbasishuur" name="minimumbasishuur" typeRef="double" />
+      <rule id="DecisionRule_17k0m1o">
+        <inputEntry id="UnaryTests_1owp99g">
+          <text>"EP"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05x8xa1">
+          <text>0.000000684366</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v4dwsq">
+          <text>0.002171483654</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0y23ect">
+          <text>15925.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dllfcb">
+          <text>22400.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fp07og">
+          <text>16.94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mgc597">
+          <text>208.14</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rbgt0q">
+          <text>225.08</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rbtigz">
+        <inputEntry id="UnaryTests_13toru7">
+          <text>"MP"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dde9oc">
+          <text>0.000000387746</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05i0hbo">
+          <text>0.002116315615</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pp23gz">
+          <text>20600.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eayzow">
+          <text>30400.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kmdu6g">
+          <text>16.94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a798b7">
+          <text>208.14</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y0d92q">
+          <text>225.08</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jpyfc7">
+        <inputEntry id="UnaryTests_0stjjnd">
+          <text>"EP-AOW"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0io7fj9">
+          <text>0.000000985639</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nughg6">
+          <text>-0.005167396290</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06mrk29">
+          <text>17325.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_157uo99">
+          <text>22375.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a4dze4">
+          <text>16.94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h7jrfr">
+          <text>206.32</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0umc0rm">
+          <text>223.26</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rf3go6">
+        <inputEntry id="UnaryTests_1wz3bad">
+          <text>"MP-AOW"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gfchku">
+          <text>0.000000587777</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iajbxg">
+          <text>-0.004821329602</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03m5jxe">
+          <text>23200.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06pm2uy">
+          <text>30400.00</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f3hl60">
+          <text>16.94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06yv39a">
+          <text>205.51</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jm08qo">
+          <text>221.45</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="basishuur" name="Basishuur">
+    <extensionElements>
+      <biodi:bounds x="476" y="-186" width="180" height="80" />
+      <biodi:edge source="parameters">
+        <biodi:waypoints x="571" y="-7" />
+        <biodi:waypoints x="574" y="-106" />
+      </biodi:edge>
+      <biodi:edge source="rekeninkomen">
+        <biodi:waypoints x="348" y="80" />
+        <biodi:waypoints x="541" y="-106" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1xpsip3" name="basishuur" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#parameters" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekeninkomen" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0ump7c9" expressionLanguage="groovy">
+      <text>(rekeninkomen &gt; minimuminkomen) ? factora * Math.pow(rekeninkomen,2) + (factorb * rekeninkomen) + taakstelling : minimumbasishuur</text>
+    </literalExpression>
+  </decision>
+  <decision id="huurtoeslagA" name="Huurtoeslag A">
+    <extensionElements>
+      <biodi:bounds x="84" y="-445" width="180" height="80" />
+      <biodi:edge source="InputData_1j1y61s">
+        <biodi:waypoints x="308" y="-138" />
+        <biodi:waypoints x="378" y="-230" />
+      </biodi:edge>
+      <biodi:edge source="kwaliteitskorting">
+        <biodi:waypoints x="73" y="-172" />
+        <biodi:waypoints x="137" y="-365" />
+      </biodi:edge>
+      <biodi:edge source="basishuur">
+        <biodi:waypoints x="569" y="-186" />
+        <biodi:waypoints x="189" y="-365" />
+      </biodi:edge>
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="-30" y="-289" />
+        <biodi:waypoints x="150" y="-365" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1qpcysz" name="huurtoeslagA" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_1j1y61s" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kwaliteitskorting" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#basishuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_00j52ys" expressionLanguage="groovy">
+      <text>Math.max(Math.min(rekenhuur, kwaliteitskorting) - basishuur, 0)</text>
+    </literalExpression>
+  </decision>
+  <inputData id="rekenhuur" name="Rekenhuur">
+    <extensionElements>
+      <biodi:bounds x="-114" y="-289" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="kwaliteitskorting" name="Kwaliteitskorting">
+    <extensionElements>
+      <biodi:bounds x="-23" y="-172" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="huurtoeslagB" name="Huurtoeslag B">
+    <extensionElements>
+      <biodi:bounds x="465" y="-448" width="180" height="80" />
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="11" y="-288" />
+        <biodi:waypoints x="490" y="-368" />
+      </biodi:edge>
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="11" y="-288" />
+        <biodi:waypoints x="490" y="-368" />
+      </biodi:edge>
+      <biodi:edge source="kwaliteitskorting">
+        <biodi:waypoints x="54" y="-172" />
+        <biodi:waypoints x="580" y="-368" />
+      </biodi:edge>
+      <biodi:edge source="rechtopB">
+        <biodi:waypoints x="194" y="-192" />
+        <biodi:waypoints x="547" y="-368" />
+      </biodi:edge>
+      <biodi:edge source="basishuur">
+        <biodi:waypoints x="581" y="-188" />
+        <biodi:waypoints x="602" y="-367" />
+      </biodi:edge>
+      <biodi:edge source="aftopping">
+        <biodi:waypoints x="881" y="-203" />
+        <biodi:waypoints x="621" y="-367" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_16y4ork" name="huurtoeslagB" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kwaliteitskorting" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#rechtopB" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#basishuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#aftopping" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0dxchpq" expressionLanguage="groovy">
+      <text>Math.max(rechtopB*0.65*(Math.min(rekenhuur, aftopping) - Math.max(basishuur, kwaliteitskorting)),0)</text>
+    </literalExpression>
+  </decision>
+  <decision id="rechtopB" name="Recht op B?">
+    <extensionElements>
+      <biodi:bounds x="183" y="-192" width="180" height="80" />
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="11" y="-276" />
+        <biodi:waypoints x="183" y="-123" />
+      </biodi:edge>
+      <biodi:edge source="kwaliteitskorting">
+        <biodi:waypoints x="102" y="-153" />
+        <biodi:waypoints x="183" y="-147" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kwaliteitskorting" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0c93qts">
+      <input id="InputClause_0t8wnc5" label="Rekenhuur &#62; Kwaliteitskorting?">
+        <inputExpression id="LiteralExpression_0r71na8" typeRef="boolean" expressionLanguage="Groovy">
+          <text>rekenhuur &gt; kwaliteitskorting</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1ozlcz2" label="Recht op B" name="rechtopB" typeRef="integer" />
+      <rule id="DecisionRule_0gbhvgf">
+        <inputEntry id="UnaryTests_0x25bfx">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mnddfw">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_063sk4q">
+        <inputEntry id="UnaryTests_0gjc2un">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14g0zoc">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="rechtopC" name="Recht op C?">
+    <extensionElements>
+      <biodi:bounds x="1025" y="-304" width="180" height="80" />
+      <biodi:edge source="InputData_0qlytux">
+        <biodi:waypoints x="1195" y="-208" />
+        <biodi:waypoints x="1231" y="-247" />
+      </biodi:edge>
+      <biodi:edge source="handicap">
+        <biodi:waypoints x="1256" y="-147" />
+        <biodi:waypoints x="1116" y="-224" />
+      </biodi:edge>
+      <biodi:edge source="aftopping">
+        <biodi:waypoints x="943" y="-197" />
+        <biodi:waypoints x="1032" y="-224" />
+      </biodi:edge>
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="11" y="-270" />
+        <biodi:waypoints x="1025" y="-255" />
+      </biodi:edge>
+      <biodi:edge source="huishouden">
+        <biodi:waypoints x="878" y="16" />
+        <biodi:waypoints x="1062" y="-224" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_0qlytux" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#handicap" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#aftopping" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#huishouden" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1uqr22r" hitPolicy="FIRST">
+      <input id="InputClause_120wbs0" label="Rekenhuur boven Aftoppingsgrens?">
+        <inputExpression id="LiteralExpression_0z15i2s" typeRef="boolean" expressionLanguage="Groovy">
+          <text>rekenhuur &gt; aftopping</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0q1tche" label="Huishouden">
+        <inputExpression id="LiteralExpression_0nu5eis" typeRef="string">
+          <text>huishouden</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1u7odoc" label="Handicap">
+        <inputExpression id="LiteralExpression_0rii7xd" typeRef="boolean">
+          <text>handicap</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_01zl54y" label="Recht op C?" name="rechtopC" typeRef="integer" />
+      <rule id="DecisionRule_0rid3qp">
+        <inputEntry id="UnaryTests_1uf9uop">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jdsy6n">
+          <text>"EP","EP-AOW","MP-AOW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tvjjtg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oml0bz">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06qcxsy">
+        <inputEntry id="UnaryTests_0yaa97g">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v8ljqn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yx1to9">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wfg754">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p05388">
+        <inputEntry id="UnaryTests_0duwcqd">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j4gknh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qgabvh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vk42uf">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="handicap" name="Handicap?">
+    <extensionElements>
+      <biodi:bounds x="1171" y="-147" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="huurtoeslagC" name="Huurtoeslag C">
+    <extensionElements>
+      <biodi:bounds x="833" y="-438" width="180" height="80" />
+      <biodi:edge source="rechtopC">
+        <biodi:waypoints x="1093" y="-304" />
+        <biodi:waypoints x="980" y="-358" />
+      </biodi:edge>
+      <biodi:edge source="rekenhuur">
+        <biodi:waypoints x="11" y="-287" />
+        <biodi:waypoints x="833" y="-382" />
+      </biodi:edge>
+      <biodi:edge source="basishuur">
+        <biodi:waypoints x="593" y="-186" />
+        <biodi:waypoints x="886" y="-358" />
+      </biodi:edge>
+      <biodi:edge source="aftopping">
+        <biodi:waypoints x="916" y="-203" />
+        <biodi:waypoints x="899" y="-355" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1pviy4m" name="huurtoeslagC" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#rechtopC" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#rekenhuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#basishuur" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#aftopping" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1aa76u7" expressionLanguage="groovy">
+      <text>Math.max(rechtopC*0.40*(rekenhuur - Math.max(basishuur, aftopping)),0)</text>
+    </literalExpression>
+  </decision>
+  <decision id="huurtoeslag" name="Huurtoeslag">
+    <extensionElements>
+      <biodi:bounds x="442" y="-615" width="180" height="80" />
+      <biodi:edge source="huurtoeslagA">
+        <biodi:waypoints x="264" y="-437" />
+        <biodi:waypoints x="444" y="-535" />
+      </biodi:edge>
+      <biodi:edge source="huurtoeslagB">
+        <biodi:waypoints x="574" y="-448" />
+        <biodi:waypoints x="526" y="-535" />
+      </biodi:edge>
+      <biodi:edge source="huurtoeslagC">
+        <biodi:waypoints x="846" y="-438" />
+        <biodi:waypoints x="622" y="-539" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_15cjlhe" name="huurtoeslag" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#huurtoeslagA" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#huurtoeslagB" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#huurtoeslagC" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0r3se7v" expressionLanguage="groovy">
+      <text>Math.round(huurtoeslagA + huurtoeslagB + huurtoeslagC)</text>
+    </literalExpression>
+  </decision>
+  <inputData id="vermogen" name="Vermogen">
+    <extensionElements>
+      <biodi:bounds x="624" y="190" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="kind" name="Kind?">
+    <extensionElements>
+      <biodi:bounds x="1255" y="128" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="leeftijd" name="Leeftijd">
+    <extensionElements>
+      <biodi:bounds x="1083" y="129" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>
