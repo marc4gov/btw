@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_19hro83" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <inputData id="WNpremie" name="WN premie percentage">
+    <extensionElements>
+      <biodi:bounds x="677" y="177" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="heffingsloon" name="Heffingsloon">
+    <extensionElements>
+      <biodi:bounds x="429" y="142" width="180" height="80" />
+      <biodi:edge source="InputData_04t1gy2">
+        <biodi:waypoints x="421" y="262" />
+        <biodi:waypoints x="363" y="232" />
+      </biodi:edge>
+      <biodi:edge source="wnpremie">
+        <biodi:waypoints x="62" y="308" />
+        <biodi:waypoints x="111" y="351" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0dsot21">
+        <biodi:waypoints x="443" y="280" />
+        <biodi:waypoints x="494" y="222" />
+      </biodi:edge>
+      <biodi:edge source="bruto">
+        <biodi:waypoints x="520" y="268" />
+        <biodi:waypoints x="520" y="222" />
+      </biodi:edge>
+      <biodi:edge source="WNpremie">
+        <biodi:waypoints x="677" y="194" />
+        <biodi:waypoints x="609" y="187" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1vgulfg" name="heffingsloon" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_04t1gy2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#wnpremie" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0dsot21" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#bruto" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#WNpremie" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_16sn50f" expressionLanguage="groovy">
+      <text>(bruto)*(1-WNpremie)</text>
+    </literalExpression>
+  </decision>
+  <decision id="belastingschijf" name="Belastingschijf">
+    <extensionElements>
+      <biodi:bounds x="218" y="-52" width="180" height="80" />
+      <biodi:edge source="heffingsloon">
+        <biodi:waypoints x="513" y="142" />
+        <biodi:waypoints x="307" y="28" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#heffingsloon" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_122pz3l">
+      <input id="InputClause_08pdsz1" label="Heffingsloon jaar" camunda:inputVariable="heffingsloon">
+        <inputExpression id="LiteralExpression_0fex9kq" typeRef="double" expressionLanguage="Groovy">
+          <text>heffingsloon * 12</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1qx83np" label="Belastingschijf" name="belastingschijf" typeRef="integer" />
+      <output id="OutputClause_04xour0" label="Percentage" name="belastingpercentage" typeRef="double" />
+      <rule id="DecisionRule_0sx7s3i">
+        <inputEntry id="UnaryTests_0ih11c2">
+          <text>&lt;= 20142</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_079pr82">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07ogfq4">
+          <text>0.3655</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hm2abj">
+        <inputEntry id="UnaryTests_0pmseh7">
+          <text>[20143..33994]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bahm7n">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nxhzlz">
+          <text>0.4085</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wdvdza">
+        <inputEntry id="UnaryTests_0w4tono">
+          <text>[33995..68507]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k4tkmp">
+          <text>3</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kshx6r">
+          <text>0.4085</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07scdcj">
+        <inputEntry id="UnaryTests_0eba97q">
+          <text>&gt;68507</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19n47nk">
+          <text>4</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d1o6b9">
+          <text>0.5195</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="ahk" name="Algemene heffingskorting">
+    <extensionElements>
+      <biodi:bounds x="534" y="-52" width="180" height="80" />
+      <biodi:edge source="heffingsloon">
+        <biodi:waypoints x="524" y="142" />
+        <biodi:waypoints x="576" y="28" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0fxo9zo" name="ahk" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#heffingsloon" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0vdh268" expressionLanguage="groovy">
+      <text>(heffingsloon*12) &gt; 20142 ? Math.max(0,2265-0.04683*(heffingsloon*12 - 20142)) : 2265</text>
+    </literalExpression>
+  </decision>
+  <decision id="arbeidskorting" name="Arbeidskorting">
+    <extensionElements>
+      <biodi:bounds x="782" y="-54" width="180" height="80" />
+      <biodi:edge source="heffingsloon">
+        <biodi:waypoints x="564" y="142" />
+        <biodi:waypoints x="798" y="26" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1g7p0zx" name="arbeidskorting" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#heffingsloon" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0201qki" expressionLanguage="groovy">
+      <text>def inkomen = heffingsloon * 12;
+def arbeidskorting
+if (inkomen &lt;= 9468) {
+  arbeidskorting = 0.01764*inkomen;
+}
+if (inkomen &gt; 9468 &amp;&amp; inkomen &lt;= 20450) {
+  arbeidskorting = 167 + 0.28064*(inkomen - 9468)
+}
+if (inkomen &gt; 20450 &amp;&amp; inkomen &lt;= 33112) {
+  arbeidskorting = 3249
+}
+if (inkomen &gt; 33112 &amp;&amp; inkomen &lt;= 123362) {
+  arbeidskorting = 3249 - 0.036 * (inkomen - 33112)
+}
+if (inkomen &gt; 123362) {
+  arbeidskorting = 0
+}
+arbeidskorting</text>
+    </literalExpression>
+  </decision>
+  <decision id="loonheffing" name="Loonheffing">
+    <extensionElements>
+      <biodi:bounds x="424" y="-220" width="180" height="80" />
+      <biodi:edge source="belastingschijf">
+        <biodi:waypoints x="329" y="-52" />
+        <biodi:waypoints x="444" y="-140" />
+      </biodi:edge>
+      <biodi:edge source="heffingsloon">
+        <biodi:waypoints x="510" y="142" />
+        <biodi:waypoints x="502" y="-140" />
+      </biodi:edge>
+      <biodi:edge source="ahk">
+        <biodi:waypoints x="592" y="-52" />
+        <biodi:waypoints x="547" y="-140" />
+      </biodi:edge>
+      <biodi:edge source="arbeidskorting">
+        <biodi:waypoints x="801" y="-54" />
+        <biodi:waypoints x="604" y="-165" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0pfose3" name="loonheffing" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#belastingschijf" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#heffingsloon" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#ahk" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#arbeidskorting" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1jvyh29" expressionLanguage="groovy">
+      <text>(belastingpercentage * (heffingsloon * 12) - ahk - arbeidskorting)/12</text>
+    </literalExpression>
+  </decision>
+  <inputData id="brutocomponenten" name="Bruto componenten">
+    <extensionElements>
+      <biodi:bounds x="368" y="396" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="bruto" name="Bruto">
+    <extensionElements>
+      <biodi:bounds x="429" y="268" width="180" height="80" />
+      <biodi:edge source="InputData_1wzlomo">
+        <biodi:waypoints x="586" y="395" />
+        <biodi:waypoints x="549" y="348" />
+      </biodi:edge>
+      <biodi:edge source="brutocomponenten">
+        <biodi:waypoints x="451" y="396" />
+        <biodi:waypoints x="492" y="348" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1wha7ls" name="bruto" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_1wzlomo" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#brutocomponenten" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0w21pq8" expressionLanguage="groovy">
+      <text>brutoloon + brutocomponenten</text>
+    </literalExpression>
+  </decision>
+  <inputData id="brutoloon" name="Brutoloon">
+    <extensionElements>
+      <biodi:bounds x="541" y="395" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>

@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_19hro83" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <inputData id="WNpremie" name="WN premie percentage">
+    <extensionElements>
+      <biodi:bounds x="481" y="403" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="bbcomponenten" name="Bijzondere componenten">
+    <extensionElements>
+      <biodi:bounds x="-6" y="381" width="180" height="80" />
+      <biodi:edge source="InputData_1wcxtfx">
+        <biodi:waypoints x="629" y="662" />
+        <biodi:waypoints x="533" y="625" />
+      </biodi:edge>
+      <biodi:edge source="looncomponent">
+        <biodi:waypoints x="101" y="556" />
+        <biodi:waypoints x="99" y="461" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#looncomponent" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_14b5xyq">
+      <input id="InputClause_14cizcs" label="Looncomponent">
+        <inputExpression id="LiteralExpression_1f1sj4f" typeRef="string">
+          <text>looncomponent</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0ns6t51" label="Netto?" name="netto" typeRef="boolean" />
+      <output id="OutputClause_0h1cttu" label="Toekenning?" name="toekenning" typeRef="boolean" />
+      <output id="OutputClause_1oy37w8" label="VT-reservering" name="vtreservering" typeRef="boolean" />
+      <rule id="DecisionRule_0glu7kc">
+        <inputEntry id="UnaryTests_1tvvmf1">
+          <text>"Netto bij"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19qzl3c">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_113upid">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ftp299">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03ph82q">
+        <inputEntry id="UnaryTests_1oivyx8">
+          <text>"Netto af"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1x6rr3y">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lodf12">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1k5hgq3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hqhgv1">
+        <inputEntry id="UnaryTests_0m57vkx">
+          <text>"Reiskostenvergoeding B"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mmr94z">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0crfr25">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00b6pan">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13ountf">
+        <inputEntry id="UnaryTests_0wq8bl1">
+          <text>"Reiskostenvergoeding"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00lftwr">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1utss2z">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hu1x6e">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hqhipb">
+        <inputEntry id="UnaryTests_1gykpwp">
+          <text>"Voorschot"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13pu1on">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19xswi6">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a69qp9">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yfawjn">
+        <inputEntry id="UnaryTests_15scfmb">
+          <text>"Jubileumuitkering"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zidk1m">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05g2t1j">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ljt50j">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1alp6cj">
+        <inputEntry id="UnaryTests_15h7jnv">
+          <text>"KM vergoeding zakelijk"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07ceiw8">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nvy8nb">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pslvv9">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01k6dk1">
+        <inputEntry id="UnaryTests_07fiml1">
+          <text>"Onkostenvergoeding"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wu2if9">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fw9z58">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oh32d3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xpaaqf">
+        <inputEntry id="UnaryTests_0tjwsm3">
+          <text>"Netto Eindejaarsuitkering"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uqd5gk">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ysrhgi">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tkk1l0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0arkj0q">
+        <inputEntry id="UnaryTests_10z9cv3">
+          <text>"EHBO vergoeding"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q4tt0k">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gllb4v">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0db8ig9">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r7quai">
+        <inputEntry id="UnaryTests_0h7v7jz">
+          <text>"Vakantietoeslag"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iwck8d">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ux4idz">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a034xb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_154sid7">
+        <inputEntry id="UnaryTests_1kush85">
+          <text>"Vak PT zonder afbouw"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mzqcy2">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ggb945">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i9iw7j">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10t9pxh">
+        <inputEntry id="UnaryTests_00vdoth">
+          <text>"Overige vergoed mnd N/B"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n5rxkx">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nl2udb">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kworpw">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09lzuoz">
+        <inputEntry id="UnaryTests_0kvig3a">
+          <text>"Representatiek verg mnd N"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s0n7tm">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lyrbyt">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0th82ag">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e17yf2">
+        <inputEntry id="UnaryTests_09tu41u">
+          <text>"Woon/werk &lt;30 km mnd N"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fbrzzx">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wq9b9u">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ci6q6f">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l7fv6f">
+        <inputEntry id="UnaryTests_1u02lwa">
+          <text>"Telefoonverg mnd N/B"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0j13b2u">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q2cymm">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k4igiu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13br69u">
+        <inputEntry id="UnaryTests_1bh4t1e">
+          <text>"KM verg zakelijk dagb N"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ujrzpe">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gqoiyq">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c3v0wl">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qi7rpz">
+        <inputEntry id="UnaryTests_1tg3a11">
+          <text>"Woon/werk &lt;30 km dagb N"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01ztlun">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01wu55q">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gsjdgp">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04xtihw">
+        <inputEntry id="UnaryTests_0v9hwuy">
+          <text>"CAK"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dxevhd">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dkpnp1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zz4yq2">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1dzywzd">
+        <inputEntry id="UnaryTests_1pqsp2a">
+          <text>"Loonbeslag"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tlgl3q">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08qsnr1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qav098">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sybp4j">
+        <inputEntry id="UnaryTests_009mm6o">
+          <text>"Bruto bonus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ruer5l">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1beuljt">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e4los9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="looncomponent" name="Looncomponent">
+    <extensionElements>
+      <biodi:bounds x="35" y="556" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="werknemerspremie" name="Werknemerspremie">
+    <extensionElements>
+      <biodi:bounds x="61" y="105" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="solidariteitsbijdrage" name="Solidariteitsbijdrage">
+    <extensionElements>
+      <biodi:bounds x="37" y="233" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="netto" name="Netto">
+    <extensionElements>
+      <biodi:bounds x="231" y="151" width="180" height="80" />
+      <biodi:edge source="InputData_1dph62d">
+        <biodi:waypoints x="451" y="40" />
+        <biodi:waypoints x="347" y="151" />
+      </biodi:edge>
+      <biodi:edge source="heffingsloon">
+        <biodi:waypoints x="421" y="264" />
+        <biodi:waypoints x="370" y="231" />
+      </biodi:edge>
+      <biodi:edge source="bruto">
+        <biodi:waypoints x="303" y="384" />
+        <biodi:waypoints x="290" y="231" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1klr5cq">
+        <biodi:waypoints x="287" y="45" />
+        <biodi:waypoints x="290" y="151" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0aaeu9c">
+        <biodi:waypoints x="454" y="119" />
+        <biodi:waypoints x="392" y="151" />
+      </biodi:edge>
+      <biodi:edge source="loonheffing">
+        <biodi:waypoints x="289" y="45" />
+        <biodi:waypoints x="307" y="151" />
+      </biodi:edge>
+      <biodi:edge source="nettoinhoudingen">
+        <biodi:waypoints x="441" y="40" />
+        <biodi:waypoints x="345" y="151" />
+      </biodi:edge>
+      <biodi:edge source="nettotoekenningen">
+        <biodi:waypoints x="462" y="119" />
+        <biodi:waypoints x="411" y="151" />
+      </biodi:edge>
+      <biodi:edge source="werknemerspremie">
+        <biodi:waypoints x="181" y="150" />
+        <biodi:waypoints x="231" y="169" />
+      </biodi:edge>
+      <biodi:edge source="solidariteitsbijdrage">
+        <biodi:waypoints x="162" y="233" />
+        <biodi:waypoints x="231" y="208" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0ew6lw2" name="netto" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_1dph62d" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#heffingsloon" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#bruto" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1klr5cq" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0aaeu9c" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#loonheffing" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettoinhoudingen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettotoekenningen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#werknemerspremie" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#solidariteitsbijdrage" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1ullnnd" expressionLanguage="groovy">
+      <text>bruto*(1 - werknemerspremie - solidariteitsbijdrage) - loonheffing + nettotoekenningen - nettoinhoudingen</text>
+    </literalExpression>
+  </decision>
+  <inputData id="loonheffing" name="Loonheffing">
+    <extensionElements>
+      <biodi:bounds x="222" y="0" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="nettoinhoudingen" name="Netto inhoudingen">
+    <extensionElements>
+      <biodi:bounds x="397" y="-5" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="bruto" name="Bruto">
+    <extensionElements>
+      <biodi:bounds x="234" y="384" width="180" height="80" />
+      <biodi:edge source="brutoloon">
+        <biodi:waypoints x="346" y="555" />
+        <biodi:waypoints x="320" y="464" />
+      </biodi:edge>
+      <biodi:edge source="brutocomponenten">
+        <biodi:waypoints x="486" y="553" />
+        <biodi:waypoints x="414" y="455" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1kibsh0" name="bruto" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#brutoloon" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#brutocomponenten" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1y4w8za" expressionLanguage="groovy">
+      <text>brutoloon + brutocomponenten</text>
+    </literalExpression>
+  </decision>
+  <inputData id="brutoloon" name="Brutoloon">
+    <extensionElements>
+      <biodi:bounds x="284" y="555" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="brutocomponenten" name="Brutocomponenten">
+    <extensionElements>
+      <biodi:bounds x="485" y="553" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="heffingsloon" name="Heffingsloon">
+    <extensionElements>
+      <biodi:bounds x="378" y="264" width="180" height="80" />
+      <biodi:edge source="bruto">
+        <biodi:waypoints x="362" y="384" />
+        <biodi:waypoints x="475" y="344" />
+      </biodi:edge>
+      <biodi:edge source="WNpremie">
+        <biodi:waypoints x="516" y="403" />
+        <biodi:waypoints x="506" y="344" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0kz4obr" name="heffingsloon" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#bruto" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#WNpremie" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_04ipckq" expressionLanguage="groovy">
+      <text>bruto * (1-WNpremie)</text>
+    </literalExpression>
+  </decision>
+  <decision id="nettobijstand" name="Netto inkomsten voor Bijstand">
+    <extensionElements>
+      <biodi:bounds x="637" y="107" width="180" height="80" />
+      <biodi:edge source="InputData_1dph62d">
+        <biodi:waypoints x="516" y="40" />
+        <biodi:waypoints x="637" y="127" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0aaeu9c">
+        <biodi:waypoints x="559" y="118" />
+        <biodi:waypoints x="637" y="144" />
+      </biodi:edge>
+      <biodi:edge source="netto">
+        <biodi:waypoints x="411" y="184" />
+        <biodi:waypoints x="637" y="166" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0rmivb1" name="nettobijstand" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#InputData_1dph62d" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0aaeu9c" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#netto" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0xh7j1w" expressionLanguage="groovy">
+      <text>netto - nettotoekenningen + nettoinhoudingen</text>
+    </literalExpression>
+  </decision>
+  <decision id="nettodeelgeenVT" name="Netto deel geen VT">
+    <extensionElements>
+      <biodi:bounds x="635" y="264" width="180" height="80" />
+      <biodi:edge source="WNpremie">
+        <biodi:waypoints x="590" y="403" />
+        <biodi:waypoints x="650" y="344" />
+      </biodi:edge>
+      <biodi:edge source="brutocomponenten">
+        <biodi:waypoints x="564" y="553" />
+        <biodi:waypoints x="680" y="344" />
+      </biodi:edge>
+      <biodi:edge source="loonheffingdeelVT">
+        <biodi:waypoints x="755" y="389" />
+        <biodi:waypoints x="748" y="344" />
+      </biodi:edge>
+      <biodi:edge source="loonheffingdeelgeenVT">
+        <biodi:waypoints x="753" y="389" />
+        <biodi:waypoints x="743" y="344" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_02v9t16" name="nettodeelgeenVT" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#WNpremie" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#brutocomponenten" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#loonheffingdeelVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#loonheffingdeelgeenVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0zdhnzr" expressionLanguage="groovy">
+      <text>brutocomponenten * (1-WNpremie) - loonheffingdeelgeenVT</text>
+    </literalExpression>
+  </decision>
+  <inputData id="loonheffingdeelgeenVT" name="Loonheffing deel geen VT">
+    <extensionElements>
+      <biodi:bounds x="695" y="389" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="nettodeelwelVT" name="Netto deel wel VT">
+    <extensionElements>
+      <biodi:bounds x="888" y="109" width="180" height="80" />
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="782" y="264" />
+        <biodi:waypoints x="894" y="189" />
+      </biodi:edge>
+      <biodi:edge source="nettobijstand">
+        <biodi:waypoints x="817" y="170" />
+        <biodi:waypoints x="888" y="152" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1rbx0w3" name="nettodeelwelVT" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#nettobijstand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_09utud4" expressionLanguage="groovy">
+      <text>nettobijstand - nettodeelgeenVT</text>
+    </literalExpression>
+  </decision>
+  <inputData id="VTwerkgever" name="VT Werkgever">
+    <extensionElements>
+      <biodi:bounds x="1152" y="277" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="VTbijstand" name="VT Bijstand">
+    <extensionElements>
+      <biodi:bounds x="716" y="552" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="inkomstenVT" name="Inkomsten inclusief VT">
+    <extensionElements>
+      <biodi:bounds x="893" y="264" width="180" height="80" />
+      <biodi:edge source="VTwerkgever">
+        <biodi:waypoints x="1152" y="310" />
+        <biodi:waypoints x="1073" y="292" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="815" y="304" />
+        <biodi:waypoints x="893" y="312" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelwelVT">
+        <biodi:waypoints x="970" y="189" />
+        <biodi:waypoints x="956" y="264" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0sarq6z" name="inkomstenVT" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#VTwerkgever" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#nettodeelwelVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1autl5o" expressionLanguage="groovy">
+      <text>nettodeelwelVT + VTwerkgever * (nettodeelwelVT - nettodeelgeenVT )</text>
+    </literalExpression>
+  </decision>
+  <decision id="tekorten" name="Te korten inkomsten">
+    <extensionElements>
+      <biodi:bounds x="899" y="401" width="180" height="80" />
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="791" y="344" />
+        <biodi:waypoints x="906" y="401" />
+      </biodi:edge>
+      <biodi:edge source="inkomstenVT">
+        <biodi:waypoints x="981" y="344" />
+        <biodi:waypoints x="978" y="401" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_07ls1c2" name="tekorten" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#inkomstenVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1o99lgl" expressionLanguage="groovy">
+      <text>nettodeelgeenVT + inkomstenVT</text>
+    </literalExpression>
+  </decision>
+  <inputData id="bijstandnorm" name="Bijstand norm">
+    <extensionElements>
+      <biodi:bounds x="1187" y="555" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="aanvbijstandVT" name="Aanvullende bijstand&#10;inclusief vakantiegeld">
+    <extensionElements>
+      <biodi:bounds x="1143" y="451" width="180" height="80" />
+      <biodi:edge source="Bijstandnorm">
+        <biodi:waypoints x="1263" y="555" />
+        <biodi:waypoints x="1153" y="531" />
+      </biodi:edge>
+      <biodi:edge source="tekorten">
+        <biodi:waypoints x="1079" y="480" />
+        <biodi:waypoints x="1143" y="457" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0e9d1i3" name="aanvbijstandVT" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#Bijstandnorm" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#tekorten" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_14ajbkv" expressionLanguage="groovy">
+      <text>bijstandnorm - tekorten</text>
+    </literalExpression>
+  </decision>
+  <decision id="aanvullendebijstand" name="Aanvullende bijstand&#10;reservering vakantiegeld">
+    <extensionElements>
+      <biodi:bounds x="903" y="524" width="180" height="80" />
+      <biodi:edge source="aanvbijstandVT">
+        <biodi:waypoints x="1143" y="518" />
+        <biodi:waypoints x="1083" y="536" />
+      </biodi:edge>
+      <biodi:edge source="VTbijstand">
+        <biodi:waypoints x="841" y="575" />
+        <biodi:waypoints x="903" y="576" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0bx6x3w" name="aanvullendebijstand" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#aanvbijstandVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#VTbijstand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1gt2pac" expressionLanguage="groovy">
+      <text>aanvbijstandVT * (1-VTbijstand)</text>
+    </literalExpression>
+  </decision>
+  <inputData id="nettotoekenningen" name="Netto toekenningen">
+    <extensionElements>
+      <biodi:bounds x="434" y="74" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <textAnnotation id="TextAnnotation_1pozktp">
+    <extensionElements>
+      <biodi:bounds x="230" y="-91" width="100" height="80" />
+    </extensionElements>
+    <text>vanuit loonheffing.dmn</text>
+  </textAnnotation>
+  <association id="Association_1s50ygn">
+    <extensionElements>
+      <biodi:edge source="InputData_1klr5cq">
+        <biodi:waypoints x="295" y="0" />
+        <biodi:waypoints x="314" y="-45" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1klr5cq" />
+    <targetRef href="#TextAnnotation_1pozktp" />
+  </association>
+  <association id="Association_1nsirp5">
+    <extensionElements>
+      <biodi:edge source="loonheffingdeelVT">
+        <biodi:waypoints x="769" y="434" />
+        <biodi:waypoints x="776" y="449" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#loonheffingdeelVT" />
+    <targetRef href="#TextAnnotation_1agz7s0" />
+  </association>
+  <textAnnotation id="TextAnnotation_06d24n4">
+    <extensionElements>
+      <biodi:bounds x="408" y="-93" width="100" height="80" />
+    </extensionElements>
+    <text>vanuit Bijzondere componenten</text>
+  </textAnnotation>
+  <association id="Association_1oq19o9">
+    <extensionElements>
+      <biodi:edge source="InputData_1dph62d">
+        <biodi:waypoints x="522" y="-4" />
+        <biodi:waypoints x="585" y="-26" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1dph62d" />
+    <targetRef href="#TextAnnotation_06d24n4" />
+  </association>
+</definitions>
