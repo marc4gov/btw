@@ -89,7 +89,8 @@
           <text>aantalAMI</text>
         </inputExpression>
       </input>
-      <output id="output_1" label="Jaarbedrag" name="jaarbedrag" typeRef="double" />
+      <output id="output_1" label="Jaarbedrag netto" name="jaarbedragnetto" typeRef="double" />
+      <output id="OutputClause_0kmss36" label="Jaarbedrag fiscaal" name="jaarbedragfiscaal" typeRef="double" />
       <rule id="DecisionRule_06i6x0j">
         <inputEntry id="UnaryTests_0y1iwwm">
           <text>false</text>
@@ -114,6 +115,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1k8efd0">
           <text>8503.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sdgj2f">
+          <text>9800</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1nuxr9o">
@@ -141,6 +145,9 @@
         <outputEntry id="LiteralExpression_0df3iqm">
           <text>11905.44</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0hit88o">
+          <text>15100</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0wszh55">
         <inputEntry id="UnaryTests_17rw50i">
@@ -166,6 +173,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_09lkwio">
           <text>11905.44</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e45qz5">
+          <text>15100</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_11o5vpt">
@@ -193,6 +203,9 @@
         <outputEntry id="LiteralExpression_0b8ur72">
           <text>8503.92</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0lnb1ll">
+          <text>9800</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_13tesyb">
         <inputEntry id="UnaryTests_1bxc4gy">
@@ -218,6 +231,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_13adgyl">
           <text>7370.04</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14a1v72">
+          <text>8000</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0gjl9cl">
@@ -245,6 +261,9 @@
         <outputEntry id="LiteralExpression_19gvg37">
           <text>6803.16</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1xzlvl8">
+          <text>7100</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_01r5qyy">
         <inputEntry id="UnaryTests_1fh73v9">
@@ -270,6 +289,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1adh0cd">
           <text>6462.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hjvjw8">
+          <text>6600</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0to83ev">
@@ -297,6 +319,9 @@
         <outputEntry id="LiteralExpression_1ec92ac">
           <text>6236.16</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0s69bxs">
+          <text>6200</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_039xbzq">
         <inputEntry id="UnaryTests_0zz8086">
@@ -322,6 +347,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1pfobvy">
           <text>2938.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10cno24">
+          <text>2900</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0pb2v8r">
@@ -349,6 +377,9 @@
         <outputEntry id="LiteralExpression_10gcagr">
           <text>4639.68</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_01aqmf6">
+          <text>4600</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1xh0v2w">
         <inputEntry id="UnaryTests_08suq8o">
@@ -374,6 +405,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1rauz4k">
           <text>7422.18</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c2c19y">
+          <text>8100</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10hf9en">
@@ -401,6 +435,9 @@
         <outputEntry id="LiteralExpression_0drdhsz">
           <text>6855.24</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0fgebyo">
+          <text>7200</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1oi554c">
         <inputEntry id="UnaryTests_0wgpefj">
@@ -426,6 +463,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_0o5vqcl">
           <text>6571.80</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15ahyz1">
+          <text>6700</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0pials2">
@@ -453,6 +493,9 @@
         <outputEntry id="LiteralExpression_09k4yi4">
           <text>6401.70</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0w6171r">
+          <text>6500</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1cv1clx">
         <inputEntry id="UnaryTests_156iszm">
@@ -478,6 +521,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1lp11cw">
           <text>6288.30</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_134nky5">
+          <text>6300</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_19j01s0">
@@ -505,6 +551,9 @@
         <outputEntry id="LiteralExpression_0d9ih5i">
           <text>2938.92</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1nhj5yf">
+          <text>2900</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1ua5z8x">
         <inputEntry id="UnaryTests_1d00ow3">
@@ -530,6 +579,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_0d5coy4">
           <text>2938.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gemty8">
+          <text>2900</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fskeqy">
@@ -557,6 +609,9 @@
         <outputEntry id="LiteralExpression_0bynyml">
           <text>5721.42</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1urnt0u">
+          <text>5700</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_08s8ijw">
         <inputEntry id="UnaryTests_01dl253">
@@ -582,6 +637,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_1valhgi">
           <text>5154.48</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0599xai">
+          <text>5100</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1odriiq">
@@ -609,6 +667,9 @@
         <outputEntry id="LiteralExpression_1uk6saf">
           <text>4871.04</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1gmm7u1">
+          <text>4800</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_14nc046">
         <inputEntry id="UnaryTests_0y11duq">
@@ -635,6 +696,9 @@
         <outputEntry id="LiteralExpression_16ec0et">
           <text>4700.94</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_04mlm2k">
+          <text>4700</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_10cbnm9">
         <inputEntry id="UnaryTests_1sy34e4">
@@ -660,6 +724,9 @@
         </inputEntry>
         <outputEntry id="LiteralExpression_0vv9sow">
           <text>4587.54</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rc7c5k">
+          <text>4500</text>
         </outputEntry>
       </rule>
     </decisionTable>
