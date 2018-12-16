@@ -56,10 +56,6 @@ public class Loonheffing {
 		// parse the drg from an input stream
 		DmnDecisionRequirementsGraph drg = dmnEngine.parseDecisionRequirementsGraph(inputStream);
 
-		// get the keys of all containing decisions
-		Set<String> decisionKeys = drg.getDecisionKeys();
-		System.out.println(decisionKeys.toString());
-
 		// get a containing decision by key
 		DmnDecision decision = drg.getDecision("heffingsloon");
 		DmnDecision decision1 = drg.getDecision("belastingschijf");

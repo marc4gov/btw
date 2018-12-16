@@ -40,13 +40,9 @@ public class Looncomponenten {
 		double brutocomponenten = jsObject.getDouble("brutocomponenten");
 		double WNpremie = jsObject.getDouble("WNpremie");
 		double loonheffing = getLoonheffing(brutoloon,brutocomponenten,WNpremie);
-		System.out.println("loonheffing");
-		System.out.println(loonheffing);
 		double loonheffingdeelgeenVT = loonheffing
 										- getLoonheffingVT(brutoloon,WNpremie);
 		
-		System.out.println("loonheffingdeelgeenVT");
-		System.out.println(loonheffingdeelgeenVT);
 		double werknemerspremie = jsObject.getDouble("werknemerspremie");
 		double solidariteitsbijdrage = jsObject.getDouble("solidariteitsbijdrage");
 		
@@ -55,11 +51,6 @@ public class Looncomponenten {
 		double VTbijstand = jsObject.getDouble("VTbijstand");
 		double VTwerkgever = jsObject.getDouble("VTwerkgever");
 		double bijstandnorm = jsObject.getDouble("bijstandnorm");
-
-		
-		double netto = (brutoloon + brutocomponenten)*(1 - werknemerspremie - solidariteitsbijdrage) - loonheffing + nettotoekenningen - nettoinhoudingen;
-		System.out.println("netto");
-		System.out.println(netto);
 				
 				
 		VariableMap variables = Variables.putValue("brutoloon", brutoloon)
