@@ -23,6 +23,10 @@
         <biodi:waypoints x="420" y="281" />
         <biodi:waypoints x="458" y="146" />
       </biodi:edge>
+      <biodi:edge source="kind12j">
+        <biodi:waypoints x="206" y="211" />
+        <biodi:waypoints x="366" y="134" />
+      </biodi:edge>
     </extensionElements>
     <informationRequirement>
       <requiredDecision href="#situatie" />
@@ -38,6 +42,9 @@
     </informationRequirement>
     <informationRequirement>
       <requiredInput href="#mub" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kind12j" />
     </informationRequirement>
     <decisionTable id="decisionTable_1" hitPolicy="FIRST">
       <input id="input_1" label="Leeftijd">
@@ -65,35 +72,7 @@
           <text>vrijwilliger</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0qf7gqm" label="Premie">
-        <inputExpression id="LiteralExpression_0avkneb" typeRef="boolean">
-          <text>premie</text>
-        </inputExpression>
-      </input>
       <output id="output_1" label="lid artikel 31 P-wet" name="artikel" typeRef="string" />
-      <rule id="DecisionRule_16p0o0m">
-        <inputEntry id="UnaryTests_1h22eio">
-          <text>&gt;27</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_01po069">
-          <text>not("2n-einde","2r")</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0dmfbra">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0bubcam">
-          <text>false</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_05afxse">
-          <text>false</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1sc1g2z">
-          <text>false</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_07cf2s6">
-          <text>"2n"</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1sy0zdi">
         <inputEntry id="UnaryTests_0ubdgtn">
           <text>&gt;27</text>
@@ -110,9 +89,6 @@
         <inputEntry id="UnaryTests_1cpirbi">
           <text>false</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1e6tyl3">
-          <text>false</text>
-        </inputEntry>
         <outputEntry id="LiteralExpression_09n8r27">
           <text>"2r"</text>
         </outputEntry>
@@ -122,18 +98,15 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vl34gv">
-          <text>not("2n","2r")</text>
+          <text>not("2n","2r","2k")</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1jayztd">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dtnjl9">
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_06j1wa1">
-          <text>false</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0z1wszd">
           <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01zld50">
@@ -148,16 +121,13 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1581rx6">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0gj5das">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0m7z7k7">
           <text>true</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ktk57i">
-          <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1j07rr0">
           <text>"2k"</text>
@@ -169,22 +139,39 @@
           <text>&gt;27</text>
         </inputEntry>
         <inputEntry id="UnaryTests_16wgngp">
-          <text>not("2j-einde")</text>
+          <text>not("2n","2k","2r","2y")</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1sitfox">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1x8vhov">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0ww2be2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0krmn6b">
-          <text></text>
+          <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0djhj16">
           <text>"2j"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16p0o0m">
+        <inputEntry id="UnaryTests_1h22eio">
+          <text>&gt;27</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01po069">
+          <text>not("2n-einde","2r","2j")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dmfbra">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bubcam">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05afxse">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07cf2s6">
+          <text>"2n"</text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -197,7 +184,7 @@
         <biodi:waypoints x="604" y="297" />
       </biodi:edge>
       <biodi:edge source="regeling">
-        <biodi:waypoints x="579" y="417" />
+        <biodi:waypoints x="578" y="369" />
         <biodi:waypoints x="607" y="297" />
       </biodi:edge>
       <biodi:edge source="InputData_1msj41j">
@@ -205,7 +192,7 @@
         <biodi:waypoints x="687" y="297" />
       </biodi:edge>
       <biodi:edge source="datum">
-        <biodi:waypoints x="753" y="413" />
+        <biodi:waypoints x="753" y="365" />
         <biodi:waypoints x="678" y="297" />
       </biodi:edge>
     </extensionElements>
@@ -221,7 +208,7 @@
     <informationRequirement>
       <requiredInput href="#datum" />
     </informationRequirement>
-    <decisionTable id="DecisionTable_1ylqwza">
+    <decisionTable id="DecisionTable_1ylqwza" hitPolicy="FIRST">
       <input id="InputClause_06taxxd" label="Huidige regeling">
         <inputExpression id="LiteralExpression_0gkn6dd" typeRef="string">
           <text>regeling</text>
@@ -229,7 +216,7 @@
       </input>
       <input id="InputClause_0jp7fli" label="Aantal maanden" camunda:inputVariable="datum">
         <inputExpression id="LiteralExpression_0aoikzi" typeRef="integer" expressionLanguage="Groovy">
-          <text>Math.round((new Date() - new Date().parse("dd.MM.yyy", datum))/30).toInteger()</text>
+          <text>Math.round((new Date() - new Date().parse("dd-MM-yyyy",datum))/30).toInteger()</text>
         </inputExpression>
       </input>
       <output id="OutputClause_0gw2q2l" label="Situatie" name="situatie" typeRef="string" />
@@ -321,11 +308,22 @@
           <text>"2y"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0bavng4">
+        <inputEntry id="UnaryTests_0474p6b">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a3dvw1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oicn6t">
+          <text>"2j"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <inputData id="regeling" name="huidige regeling">
     <extensionElements>
-      <biodi:bounds x="511" y="417" width="125" height="45" />
+      <biodi:bounds x="510" y="369" width="125" height="45" />
     </extensionElements>
   </inputData>
   <inputData id="leeftijd" name="leeftijd">
@@ -350,10 +348,10 @@
   </inputData>
   <decision id="vrijlating" name="Vrijlating - inkomen">
     <extensionElements>
-      <biodi:bounds x="622" y="-96" width="180" height="80" />
+      <biodi:bounds x="367" y="-100" width="180" height="80" />
       <biodi:edge source="artikel">
-        <biodi:waypoints x="546" y="68" />
-        <biodi:waypoints x="631" y="-16" />
+        <biodi:waypoints x="457" y="66" />
+        <biodi:waypoints x="458" y="-20" />
       </biodi:edge>
     </extensionElements>
     <informationRequirement>
@@ -369,18 +367,18 @@
       <output id="OutputClause_0v70d6a" label="Percentage van loon" name="percentage" typeRef="double" />
       <output id="OutputClause_0jqna2q" label="Max Bedrag per jaar" name="maxbedragjaar" typeRef="double" />
       <rule id="DecisionRule_00ienub">
-        <description>2429 max per kalenderjaar</description>
+        <description>2416 max per kalenderjaar</description>
         <inputEntry id="UnaryTests_1wzlcys">
           <text>"2j"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0qsq5oh">
-          <text>202.40</text>
+          <text>201</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1c1v0wn">
           <text>0</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03rf0er">
-          <text>2429</text>
+          <text>2416</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1gh9634">
@@ -444,7 +442,7 @@
   </decision>
   <inputData id="datum" name="ingangsdatum regeling">
     <extensionElements>
-      <biodi:bounds x="705" y="413" width="125" height="45" />
+      <biodi:bounds x="705" y="365" width="125" height="45" />
     </extensionElements>
   </inputData>
 </definitions>

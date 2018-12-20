@@ -3,14 +3,6 @@
   <decision id="artikel" name="Vrijlating - artikel">
     <extensionElements>
       <biodi:bounds x="366" y="66" width="180" height="80" />
-      <biodi:edge source="situatie">
-        <biodi:waypoints x="669" y="217" />
-        <biodi:waypoints x="456" y="146" />
-      </biodi:edge>
-      <biodi:edge source="leeftijd">
-        <biodi:waypoints x="199" y="118" />
-        <biodi:waypoints x="366" y="141" />
-      </biodi:edge>
       <biodi:edge source="kind-12j">
         <biodi:waypoints x="210" y="211" />
         <biodi:waypoints x="366" y="142" />
@@ -24,16 +16,18 @@
         <biodi:waypoints x="458" y="146" />
       </biodi:edge>
       <biodi:edge source="kind12j">
-        <biodi:waypoints x="206" y="211" />
+        <biodi:waypoints x="216" y="179" />
         <biodi:waypoints x="366" y="134" />
       </biodi:edge>
+      <biodi:edge source="leeftijd">
+        <biodi:waypoints x="218" y="105" />
+        <biodi:waypoints x="366" y="106" />
+      </biodi:edge>
+      <biodi:edge source="situatie">
+        <biodi:waypoints x="596" y="217" />
+        <biodi:waypoints x="520" y="146" />
+      </biodi:edge>
     </extensionElements>
-    <informationRequirement>
-      <requiredDecision href="#situatie" />
-    </informationRequirement>
-    <informationRequirement>
-      <requiredInput href="#leeftijd" />
-    </informationRequirement>
     <informationRequirement>
       <requiredInput href="#kind-12j" />
     </informationRequirement>
@@ -45,6 +39,12 @@
     </informationRequirement>
     <informationRequirement>
       <requiredInput href="#kind12j" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#leeftijd" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#situatie" />
     </informationRequirement>
     <decisionTable id="decisionTable_1" hitPolicy="FIRST">
       <input id="input_1" label="Leeftijd">
@@ -328,12 +328,12 @@
   </inputData>
   <inputData id="leeftijd" name="leeftijd">
     <extensionElements>
-      <biodi:bounds x="74" y="112" width="125" height="45" />
+      <biodi:bounds x="93" y="82" width="125" height="45" />
     </extensionElements>
   </inputData>
   <inputData id="kind12j" name="kind &#60; 12 jaar">
     <extensionElements>
-      <biodi:bounds x="95" y="211" width="125" height="45" />
+      <biodi:bounds x="105" y="179" width="125" height="45" />
     </extensionElements>
   </inputData>
   <inputData id="mub" name="medisch uren beperkt">

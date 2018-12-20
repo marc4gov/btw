@@ -46,7 +46,8 @@
       <requiredInput href="#WNpremie" />
     </informationRequirement>
     <literalExpression id="LiteralExpression_16sn50f" expressionLanguage="groovy">
-      <text>(bruto)*(1-WNpremie)</text>
+      <text>(bruto)*(1-WNpremie)
+</text>
     </literalExpression>
   </decision>
   <decision id="belastingschijf" name="Belastingschijf">
@@ -216,6 +217,10 @@ arbeidskorting</text>
         <biodi:waypoints x="451" y="396" />
         <biodi:waypoints x="492" y="348" />
       </biodi:edge>
+      <biodi:edge source="brutoloon">
+        <biodi:waypoints x="589" y="395" />
+        <biodi:waypoints x="558" y="348" />
+      </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_1wha7ls" name="bruto" typeRef="double" />
     <informationRequirement>
@@ -223,6 +228,9 @@ arbeidskorting</text>
     </informationRequirement>
     <informationRequirement>
       <requiredInput href="#brutocomponenten" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#brutoloon" />
     </informationRequirement>
     <literalExpression id="LiteralExpression_0w21pq8" expressionLanguage="groovy">
       <text>brutoloon + brutocomponenten</text>

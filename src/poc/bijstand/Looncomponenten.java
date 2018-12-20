@@ -31,10 +31,14 @@ import com.google.gson.GsonBuilder;
 public class Looncomponenten {
 
 	private static Map<String, Object> results = new HashMap<String, Object>();
+	public  Map<String, Object> getResults() {
+		return results;
+	}
 
 	private static Loonheffing loonheffing = new Loonheffing();
+	
 
-	protected static VariableMap prepareVariableMap(JSONObject jsObject) {
+	protected VariableMap prepareVariableMap(JSONObject jsObject) {
 
 		double brutoloon = jsObject.getDouble("brutoloon");
 		double brutocomponenten = jsObject.getDouble("brutocomponenten");
@@ -49,7 +53,6 @@ public class Looncomponenten {
 		double nettotoekenningen = jsObject.getDouble("nettotoekenningen");
 		double nettoinhoudingen = jsObject.getDouble("nettoinhoudingen");
 		double VTbijstand = jsObject.getDouble("VTbijstand");
-		double VTwerkgever = jsObject.getDouble("VTwerkgever");
 		double bijstandnorm = jsObject.getDouble("bijstandnorm");
 				
 				
@@ -63,7 +66,6 @@ public class Looncomponenten {
 								.putValue("nettotoekenningen", nettotoekenningen)
 								.putValue("nettoinhoudingen", nettoinhoudingen)
 								.putValue("VTbijstand", VTbijstand)
-								.putValue("VTwerkgever", VTwerkgever)
 								.putValue("bijstandnorm", bijstandnorm);
 								
 		
@@ -71,7 +73,7 @@ public class Looncomponenten {
 	}	
 	
 	
-	protected static void parseAndEvaluateDecision(VariableMap variables, InputStream inputStream) {
+	protected void parseAndEvaluateDecision(VariableMap variables, InputStream inputStream) {
 
 		// create a new default DMN engine
 		DmnEngine dmnEngine = DmnEngineConfiguration.createDefaultDmnEngineConfiguration().buildEngine();
@@ -87,32 +89,20 @@ public class Looncomponenten {
 		DmnDecision decision = drg.getDecision("netto");
 		DmnDecision decision1 = drg.getDecision("nettodeelgeenVT");
 		DmnDecision decision2 = drg.getDecision("nettobijstand");
-		DmnDecision decision3 = drg.getDecision("tekorten");
-		DmnDecision decision4 = drg.getDecision("aanvullendebijstand");
 		DmnDecision decision5 = drg.getDecision("heffingsloon");
-		DmnDecision decision6 = drg.getDecision("nettodeelwelVT");
-		DmnDecision decision7 = drg.getDecision("inkomstenVT");
 		
 		
 		// evaluate decision
 		DmnDecisionResult result = dmnEngine.evaluateDecision(decision, variables);
 		DmnDecisionResult result1 = dmnEngine.evaluateDecision(decision1, variables);
 		DmnDecisionResult result2 = dmnEngine.evaluateDecision(decision2, variables);
-		DmnDecisionResult result3 = dmnEngine.evaluateDecision(decision3, variables);
-		DmnDecisionResult result4 = dmnEngine.evaluateDecision(decision4, variables);
 		DmnDecisionResult result5 = dmnEngine.evaluateDecision(decision5, variables);
-		DmnDecisionResult result6 = dmnEngine.evaluateDecision(decision6, variables);
-		DmnDecisionResult result7 = dmnEngine.evaluateDecision(decision7, variables);
 		
 
 		results.put("netto", result.collectEntries("netto").toArray()[0]);
 		results.put("nettodeelgeenVT", result1.collectEntries("nettodeelgeenVT").toArray()[0]);
 		results.put("nettobijstand", result2.collectEntries("nettobijstand").toArray()[0]);
-		results.put("tekorten", result3.collectEntries("tekorten").toArray()[0]);
-		results.put("aanvullendebijstand", result4.collectEntries("aanvullendebijstand").toArray()[0]);
 		results.put("heffingsloon", result5.collectEntries("heffingsloon").toArray()[0]);
-		results.put("nettodeelwelVT", result6.collectEntries("nettodeelwelVT").toArray()[0]);
-		results.put("inkomstenVT", result7.collectEntries("inkomstenVT").toArray()[0]);
 		
 	}
 
@@ -133,7 +123,6 @@ public class Looncomponenten {
 		}
 		return loonheffing.getResults();
 	}
-	
 	
 	private static double getLoonheffingVT(double brutoloon, double WNpremie) {
 		return (double) getResultsFromLoonheffing(brutoloon, 0, WNpremie).get("loonheffing");

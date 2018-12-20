@@ -35,7 +35,7 @@
   </inputData>
   <inputData id="maandenbijstand" name="aantal hele maanden bijstand">
     <extensionElements>
-      <biodi:bounds x="734" y="183" width="125" height="45" />
+      <biodi:bounds x="688" y="183" width="125" height="45" />
     </extensionElements>
   </inputData>
   <decision id="betaaldagenmaand1" name="Betaaldagen / dagen maand 1">
@@ -120,8 +120,8 @@
         <biodi:waypoints x="840" y="303" />
       </biodi:edge>
       <biodi:edge source="maandenbijstand">
-        <biodi:waypoints x="760" y="228" />
-        <biodi:waypoints x="793" y="259" />
+        <biodi:waypoints x="750" y="228" />
+        <biodi:waypoints x="750" y="259" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_09ooyhz" name="maxloonheffing" typeRef="double" />
@@ -172,14 +172,14 @@
   </inputData>
   <decision id="loonheffing" name="Loonheffing">
     <extensionElements>
-      <biodi:bounds x="300" y="82" width="180" height="80" />
+      <biodi:bounds x="334" y="77" width="180" height="80" />
       <biodi:edge source="beschikbareloonheffing">
         <biodi:waypoints x="475" y="255" />
-        <biodi:waypoints x="418" y="162" />
+        <biodi:waypoints x="452" y="157" />
       </biodi:edge>
       <biodi:edge source="netto">
         <biodi:waypoints x="297" y="254" />
-        <biodi:waypoints x="367" y="162" />
+        <biodi:waypoints x="401" y="157" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_0xc5rmh" name="loonheffing" typeRef="double" />
@@ -200,18 +200,18 @@
   </inputData>
   <decision id="bijdragezvw1" name="Bijdrage ZVW 1">
     <extensionElements>
-      <biodi:bounds x="985" y="606" width="180" height="80" />
+      <biodi:bounds x="681" y="612" width="180" height="80" />
       <biodi:edge source="betaal1">
         <biodi:waypoints x="597" y="544" />
-        <biodi:waypoints x="994" y="606" />
+        <biodi:waypoints x="690" y="612" />
       </biodi:edge>
       <biodi:edge source="dagenmaand1">
         <biodi:waypoints x="722" y="548" />
-        <biodi:waypoints x="1071" y="606" />
+        <biodi:waypoints x="767" y="612" />
       </biodi:edge>
       <biodi:edge source="maxpremieloon">
         <biodi:waypoints x="1163" y="550" />
-        <biodi:waypoints x="1151" y="606" />
+        <biodi:waypoints x="847" y="612" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_1dkl7fr" name="bijdragezvw1" typeRef="double" />
@@ -230,18 +230,18 @@
   </decision>
   <decision id="bijdragezvw2" name="Bijdrage ZVW 2">
     <extensionElements>
-      <biodi:bounds x="1254" y="599" width="180" height="80" />
+      <biodi:bounds x="1023" y="613" width="180" height="80" />
       <biodi:edge source="betaal2">
         <biodi:waypoints x="894" y="550" />
-        <biodi:waypoints x="1302" y="599" />
+        <biodi:waypoints x="1071" y="613" />
       </biodi:edge>
       <biodi:edge source="dagenmaand2">
         <biodi:waypoints x="1006" y="552" />
-        <biodi:waypoints x="1380" y="599" />
+        <biodi:waypoints x="1149" y="613" />
       </biodi:edge>
       <biodi:edge source="maxpremieloon">
-        <biodi:waypoints x="1245" y="550" />
-        <biodi:waypoints x="1263" y="599" />
+        <biodi:waypoints x="1194" y="550" />
+        <biodi:waypoints x="1178" y="613" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_1ffs5b9" name="bijdragezvw2" typeRef="double" />
@@ -260,10 +260,10 @@
   </decision>
   <decision id="bijdragezvw3" name="Bijdrage ZVW 3">
     <extensionElements>
-      <biodi:bounds x="744" y="73" width="180" height="80" />
+      <biodi:bounds x="652" y="73" width="180" height="80" />
       <biodi:edge source="maandenbijstand">
-        <biodi:waypoints x="824" y="183" />
-        <biodi:waypoints x="780" y="153" />
+        <biodi:waypoints x="750" y="183" />
+        <biodi:waypoints x="749" y="153" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_1liaq6y" name="bijdragezvw3" typeRef="double" />
@@ -271,22 +271,22 @@
       <requiredInput href="#maandenbijstand" />
     </informationRequirement>
     <literalExpression id="LiteralExpression_0xqd68b" expressionLanguage="groovy">
-      <text>maandenbijstand * maxpremieloon/12 </text>
+      <text>maandenbijstand * maxpremieloon/12</text>
     </literalExpression>
   </decision>
   <decision id="maxpremieloonuitkering" name="Max premieloon &#10;uitkeringsperiode">
     <extensionElements>
       <biodi:bounds x="895" y="-87" width="180" height="80" />
       <biodi:edge source="bijdragezvw3">
-        <biodi:waypoints x="879" y="73" />
+        <biodi:waypoints x="787" y="73" />
         <biodi:waypoints x="901" y="-7" />
       </biodi:edge>
       <biodi:edge source="bijdragezvw2">
-        <biodi:waypoints x="1345" y="599" />
+        <biodi:waypoints x="1114" y="613" />
         <biodi:waypoints x="970" y="-7" />
       </biodi:edge>
       <biodi:edge source="bijdragezvw1">
-        <biodi:waypoints x="1101" y="606" />
+        <biodi:waypoints x="797" y="612" />
         <biodi:waypoints x="991" y="-7" />
       </biodi:edge>
     </extensionElements>
@@ -308,7 +308,7 @@
     <extensionElements>
       <biodi:bounds x="149" y="-86" width="180" height="80" />
       <biodi:edge source="loonheffing">
-        <biodi:waypoints x="360" y="82" />
+        <biodi:waypoints x="394" y="77" />
         <biodi:waypoints x="290" y="-6" />
       </biodi:edge>
       <biodi:edge source="netto">
@@ -335,8 +335,8 @@
         <biodi:waypoints x="494" y="-46" />
       </biodi:edge>
       <biodi:edge source="maxpremieloonuitkering">
-        <biodi:waypoints x="895" y="-42" />
-        <biodi:waypoints x="674" y="-30" />
+        <biodi:waypoints x="895" y="-48" />
+        <biodi:waypoints x="674" y="-49" />
       </biodi:edge>
     </extensionElements>
     <variable id="InformationItem_0v2hbt8" name="inkomensafhankelijkebijdrage" typeRef="double" />
