@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_1rmmgbe" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="jaarbedrag" name="Schatting jaarbedragen">
+    <extensionElements>
+      <biodi:bounds x="440" y="145" width="180" height="80" />
+      <biodi:edge source="aantalpersonen">
+        <biodi:waypoints x="379" y="252" />
+        <biodi:waypoints x="440" y="220" />
+      </biodi:edge>
+      <biodi:edge source="kinderen">
+        <biodi:waypoints x="525" y="294" />
+        <biodi:waypoints x="528" y="225" />
+      </biodi:edge>
+      <biodi:edge source="leeftijd2">
+        <biodi:waypoints x="675" y="251" />
+        <biodi:waypoints x="620" y="224" />
+      </biodi:edge>
+      <biodi:edge source="leeftijd1">
+        <biodi:waypoints x="656" y="160" />
+        <biodi:waypoints x="620" y="169" />
+      </biodi:edge>
+      <biodi:edge source="aantalAMI">
+        <biodi:waypoints x="581" y="95" />
+        <biodi:waypoints x="560" y="145" />
+      </biodi:edge>
+      <biodi:edge source="alleen">
+        <biodi:waypoints x="419" y="102" />
+        <biodi:waypoints x="487" y="145" />
+      </biodi:edge>
+      <biodi:edge source="kostendeler">
+        <biodi:waypoints x="377" y="172" />
+        <biodi:waypoints x="440" y="182" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#aantalpersonen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kinderen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#leeftijd2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#leeftijd1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#aantalAMI" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#alleen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#kostendeler" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Kostendeling?">
+        <inputExpression id="inputExpression_1" typeRef="boolean">
+          <text>kostendeling</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1nguoxv" label="Aantal personen">
+        <inputExpression id="LiteralExpression_15jlc17" typeRef="integer">
+          <text>aantalpersonen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_09jubix" label="Alleenstaande?">
+        <inputExpression id="LiteralExpression_0kyw816" typeRef="boolean">
+          <text>alleen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0xdkbii" label="Leeftijd ouder 1">
+        <inputExpression id="LiteralExpression_1kr7i80" typeRef="integer">
+          <text>leeftijd1</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1v67j54" label="Leeftijd ouder 2">
+        <inputExpression id="LiteralExpression_14rublh" typeRef="integer">
+          <text>leeftijd2</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_19by7a7" label="Kinderen?">
+        <inputExpression id="LiteralExpression_1honiu3" typeRef="boolean">
+          <text>kinderen</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ku0mca" label="aantal AMI">
+        <inputExpression id="LiteralExpression_08icn3c" typeRef="integer">
+          <text>aantalAMI</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Jaarbedrag netto" name="jaarbedragnetto" typeRef="double" />
+      <output id="OutputClause_0kmss36" label="Jaarbedrag fiscaal" name="jaarbedragfiscaal" typeRef="double" />
+      <rule id="DecisionRule_06i6x0j">
+        <inputEntry id="UnaryTests_0y1iwwm">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jzaei0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fwjamn">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15srhpp">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j0gz8j">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f5py9v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bsaagw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k8efd0">
+          <text>8503.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sdgj2f">
+          <text>9800</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nuxr9o">
+        <inputEntry id="UnaryTests_08ksvn9">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18o5ppn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fitklt">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fnzcu6">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y3gn1j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0op0dr4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xf4czl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0df3iqm">
+          <text>11905.44</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hit88o">
+          <text>15100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wszh55">
+        <inputEntry id="UnaryTests_17rw50i">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wc093f">
+          <text>1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11e9q3l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r07p50">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sgu6ic">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c4ks13">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nswlyg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09lkwio">
+          <text>11905.44</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e45qz5">
+          <text>15100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11o5vpt">
+        <inputEntry id="UnaryTests_08uugla">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06uml9e">
+          <text>2</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05yyylm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_005hfqc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05z3vm8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0itipzz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01wwnlf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b8ur72">
+          <text>8503.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lnb1ll">
+          <text>9800</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13tesyb">
+        <inputEntry id="UnaryTests_1bxc4gy">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vdntxa">
+          <text>3</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f51ryn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u5n0iz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fdebal">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pxp8ss">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ubl13l">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13adgyl">
+          <text>7370.04</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14a1v72">
+          <text>8000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gjl9cl">
+        <inputEntry id="UnaryTests_1resqdy">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11qy7dy">
+          <text>4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wbcf4j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0442roo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10dckkc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0plp0u2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ysxkb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19gvg37">
+          <text>6803.16</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xzlvl8">
+          <text>7100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01r5qyy">
+        <inputEntry id="UnaryTests_1fh73v9">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ezzr0g">
+          <text>5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05skwsf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18lomc2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kf3w1q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0son05f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17i35qe">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1adh0cd">
+          <text>6462.96</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hjvjw8">
+          <text>6600</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0to83ev">
+        <inputEntry id="UnaryTests_1f61y6d">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dir7ed">
+          <text>6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hm9830">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l2dmr1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hmawyq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s2s5rh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sk2xgi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ec92ac">
+          <text>6236.16</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s69bxs">
+          <text>6200</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_039xbzq">
+        <inputEntry id="UnaryTests_0zz8086">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1au597u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fzdz2q">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fss629">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y4iy4r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1spx5s7">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l4ce5m">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pfobvy">
+          <text>2938.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10cno24">
+          <text>2900</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pb2v8r">
+        <inputEntry id="UnaryTests_1xbovw2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z61qy7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1edr238">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0adraxw">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_148azpe">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wfeiyz">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g4pnfp">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10gcagr">
+          <text>4639.68</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01aqmf6">
+          <text>4600</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xh0v2w">
+        <inputEntry id="UnaryTests_08suq8o">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_014og2m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1klxmj6">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hebyry">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09xwgmq">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jnr4sq">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lni7m7">
+          <text>&lt;=1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rauz4k">
+          <text>7422.18</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c2c19y">
+          <text>8100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10hf9en">
+        <inputEntry id="UnaryTests_0r84p8g">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rd2a92">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kdpydu">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mixr61">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bg7v8g">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0owctnz">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10zv5ni">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0drdhsz">
+          <text>6855.24</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fgebyo">
+          <text>7200</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oi554c">
+        <inputEntry id="UnaryTests_0wgpefj">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fj7158">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lkxjlz">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19wfrsa">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01dcefj">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tqusy0">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14p3isp">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o5vqcl">
+          <text>6571.80</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15ahyz1">
+          <text>6700</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pials2">
+        <inputEntry id="UnaryTests_1ja0qa3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_161kw1m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mvfmxc">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09170sf">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_106ckh4">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hcx52k">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qflaw8">
+          <text>4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09k4yi4">
+          <text>6401.70</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w6171r">
+          <text>6500</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cv1clx">
+        <inputEntry id="UnaryTests_156iszm">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1us8tmz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18xdbt7">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0igb14y">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01pggr3">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02fpwqm">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yg6msj">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lp11cw">
+          <text>6288.30</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_134nky5">
+          <text>6300</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19j01s0">
+        <inputEntry id="UnaryTests_0uv5xwa">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dvenv3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1409ikj">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b2qz77">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k825eo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kmi7rf">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01t19s8">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d9ih5i">
+          <text>2938.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nhj5yf">
+          <text>2900</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ua5z8x">
+        <inputEntry id="UnaryTests_1d00ow3">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a2mdth">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04f7fvy">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ylpn6k">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hc74b8">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xws5ke">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1enk3ob">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0d5coy4">
+          <text>2938.92</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gemty8">
+          <text>2900</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fskeqy">
+        <inputEntry id="UnaryTests_1dk56q1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wol0ml">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11rqa69">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v4v0yo">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nr8czq">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q6nc1m">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16jimfn">
+          <text>&lt;=1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bynyml">
+          <text>5721.42</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1urnt0u">
+          <text>5700</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08s8ijw">
+        <inputEntry id="UnaryTests_01dl253">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07ljwj0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xk70m">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wokvs6">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g8ujvl">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fjc7xt">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jzl0bc">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1valhgi">
+          <text>5154.48</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0599xai">
+          <text>5100</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1odriiq">
+        <inputEntry id="UnaryTests_0gbdksw">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pjmppo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11vqed4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0drm29i">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0myb92i">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pt6utv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19d2hx9">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uk6saf">
+          <text>4871.04</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gmm7u1">
+          <text>4800</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14nc046">
+        <inputEntry id="UnaryTests_0y11duq">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oqw1ks">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wihymm">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_001qh8y">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pu9syq">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ds4thv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fgkye9">
+          <text>4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16ec0et">
+          <text>4700.94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04mlm2k">
+          <text>4700</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10cbnm9">
+        <inputEntry id="UnaryTests_1sy34e4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kofxsh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0is4o7k">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0302j00">
+          <text>&lt;=21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1js2c8l">
+          <text>&gt;21</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xwtus5">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zyfuyg">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vv9sow">
+          <text>4587.54</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rc7c5k">
+          <text>4500</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="alleen" name="Alleenstaande?">
+    <extensionElements>
+      <biodi:bounds x="322" y="57" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="aantalpersonen" name="Aantal personen">
+    <extensionElements>
+      <biodi:bounds x="272" y="252" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="kostendeler" name="Kostendeler?">
+    <extensionElements>
+      <biodi:bounds x="252" y="139" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="kinderen" name="Kinderen?">
+    <extensionElements>
+      <biodi:bounds x="461" y="294" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="leeftijd1" name="Leeftijd ouder 1">
+    <extensionElements>
+      <biodi:bounds x="656" y="120" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="leeftijd2" name="Leeftijd ouder 2">
+    <extensionElements>
+      <biodi:bounds x="660" y="251" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="aantalAMI" name="Aantal AMI">
+    <extensionElements>
+      <biodi:bounds x="527" y="50" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_19hro83" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="VTtabel" name="Vakantietoeslag tabel">
+    <extensionElements>
+      <biodi:bounds x="556" y="153" width="180" height="80" />
+      <biodi:edge source="nettodeelwelVT">
+        <biodi:waypoints x="604" y="319" />
+        <biodi:waypoints x="648" y="233" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#nettodeelwelVT" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0xkzw2q" hitPolicy="FIRST">
+      <input id="InputClause_1fy4wql" label="Inkomsten met reservering VT werkgever">
+        <inputExpression id="LiteralExpression_1qw0kaz" typeRef="double">
+          <text>nettodeelwelVT</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0qe6241" label="Vakantietoeslag percentage" name="VTpercentage" typeRef="double" />
+      <output id="OutputClause_0k8eazz" label="Correctiefactor" name="correctiefactor" typeRef="double" />
+      <rule id="DecisionRule_11jmcol">
+        <inputEntry id="UnaryTests_0t9hheo">
+          <text>&lt; 547.76</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfft15">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y91wt9">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sp9r6r">
+        <inputEntry id="UnaryTests_0qd2uxu">
+          <text>&lt; 591.56</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ck2w3o">
+          <text>0.0521</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ue7id">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kmqrir">
+        <inputEntry id="UnaryTests_129d7u8">
+          <text>&lt; 732.34</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16y2oot">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_062lk78">
+          <text>-16.51</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j509k6">
+        <inputEntry id="UnaryTests_1i158mt">
+          <text>&lt; 1436.70</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfddou">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07fhotg">
+          <text>0.91</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0821bhp">
+        <inputEntry id="UnaryTests_0iozhub">
+          <text>&gt;= 1436.70</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vbxtxb">
+          <text>0.0493</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0efo3f5">
+          <text>0.56</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="nettodeelwelVT" name="Netto deel wel VT">
+    <extensionElements>
+      <biodi:bounds x="543" y="319" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <association id="Association_1s50ygn">
+    <extensionElements>
+      <biodi:edge source="InputData_1klr5cq">
+        <biodi:waypoints x="295" y="0" />
+        <biodi:waypoints x="314" y="-45" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1klr5cq" />
+    <targetRef href="#TextAnnotation_1pozktp" />
+  </association>
+  <association id="Association_1nsirp5">
+    <extensionElements>
+      <biodi:edge source="loonheffingdeelVT">
+        <biodi:waypoints x="769" y="434" />
+        <biodi:waypoints x="776" y="449" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#loonheffingdeelVT" />
+    <targetRef href="#TextAnnotation_1agz7s0" />
+  </association>
+  <association id="Association_1oq19o9">
+    <extensionElements>
+      <biodi:edge source="InputData_1dph62d">
+        <biodi:waypoints x="522" y="-4" />
+        <biodi:waypoints x="585" y="-26" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1dph62d" />
+    <targetRef href="#TextAnnotation_06d24n4" />
+  </association>
+</definitions>

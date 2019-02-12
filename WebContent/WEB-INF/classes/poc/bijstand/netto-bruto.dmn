@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_04f7vq4" name="netto-bruto" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="netto" name="Netto ontvangen">
+    <extensionElements>
+      <biodi:bounds x="176" y="254" width="180" height="80" />
+      <biodi:edge source="nettobijstand">
+        <biodi:waypoints x="195" y="388" />
+        <biodi:waypoints x="234" y="334" />
+      </biodi:edge>
+      <biodi:edge source="alimentatie">
+        <biodi:waypoints x="328" y="390" />
+        <biodi:waypoints x="299" y="334" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0pidbsm" name="netto" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#nettobijstand" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#alimentatie" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_08zx5hd" expressionLanguage="groovy">
+      <text>nettobijstand + alimentatie</text>
+    </literalExpression>
+  </decision>
+  <inputData id="nettobijstand" name="netto bijstand">
+    <extensionElements>
+      <biodi:bounds x="101" y="388" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="alimentatie" name="Alimentatie">
+    <extensionElements>
+      <biodi:bounds x="279" y="390" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="maandenbijstand" name="aantal hele maanden bijstand">
+    <extensionElements>
+      <biodi:bounds x="734" y="183" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="betaaldagenmaand1" name="Betaaldagen / dagen maand 1">
+    <extensionElements>
+      <biodi:bounds x="598" y="373" width="180" height="80" />
+      <biodi:edge source="betaal1">
+        <biodi:waypoints x="571" y="499" />
+        <biodi:waypoints x="616" y="453" />
+      </biodi:edge>
+      <biodi:edge source="dagenmaand1">
+        <biodi:waypoints x="700" y="503" />
+        <biodi:waypoints x="698" y="453" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0iajbk9" name="betaaldagenmaand1" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#betaal1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#dagenmaand1" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0dpa5v6" expressionLanguage="groovy">
+      <text>betaal1 == 0 ? 0 : (2265/12)*betaal1/dagenmaand1</text>
+    </literalExpression>
+  </decision>
+  <decision id="betaaldagenmaand2" name="Betaaldagen / dagen maand 2">
+    <extensionElements>
+      <biodi:bounds x="804" y="371" width="180" height="80" />
+      <biodi:edge source="betaal2">
+        <biodi:waypoints x="876" y="505" />
+        <biodi:waypoints x="890" y="451" />
+      </biodi:edge>
+      <biodi:edge source="dagenmaand2">
+        <biodi:waypoints x="985" y="507" />
+        <biodi:waypoints x="939" y="451" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_05ezqmd" name="betaaldagenmaand2" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#betaal2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#dagenmaand2" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_01uzwx5" expressionLanguage="groovy">
+      <text>betaal2 == 0 ? 0 : (2265/12)*betaal2/dagenmaand2</text>
+    </literalExpression>
+  </decision>
+  <inputData id="betaal1" name="betaaldagen 1">
+    <extensionElements>
+      <biodi:bounds x="477" y="499" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="dagenmaand1" name="aantal dagen maand 1">
+    <extensionElements>
+      <biodi:bounds x="636" y="503" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="betaal2" name="betaaldagen 2">
+    <extensionElements>
+      <biodi:bounds x="800" y="505" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="dagenmaand2" name="aantal dagen maand 2">
+    <extensionElements>
+      <biodi:bounds x="948" y="507" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="maxloonheffing" name="Max Loonheffing">
+    <extensionElements>
+      <biodi:bounds x="660" y="259" width="180" height="80" />
+      <biodi:edge source="betaaldagenmaand1">
+        <biodi:waypoints x="709" y="373" />
+        <biodi:waypoints x="726" y="339" />
+      </biodi:edge>
+      <biodi:edge source="betaaldagenmaand2">
+        <biodi:waypoints x="839" y="371" />
+        <biodi:waypoints x="794" y="339" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0jmbwfw">
+        <biodi:waypoints x="928" y="305" />
+        <biodi:waypoints x="840" y="303" />
+      </biodi:edge>
+      <biodi:edge source="maandenbijstand">
+        <biodi:waypoints x="760" y="228" />
+        <biodi:waypoints x="793" y="259" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_09ooyhz" name="maxloonheffing" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#betaaldagenmaand1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#betaaldagenmaand2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0jmbwfw" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#maandenbijstand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1i8runj" expressionLanguage="groovy">
+      <text>(maandenbijstand * 2265/12) + betaaldagenmaand1 + betaaldagenmaand2 &lt; 2265 ? 
+(maandenbijstand * 2265/12) + betaaldagenmaand1 + betaaldagenmaand2 : 2265</text>
+    </literalExpression>
+  </decision>
+  <decision id="beschikbareloonheffing" name="Beschikbare loonheffing">
+    <extensionElements>
+      <biodi:bounds x="411" y="255" width="180" height="80" />
+      <biodi:edge source="maxloonheffing">
+        <biodi:waypoints x="660" y="292" />
+        <biodi:waypoints x="591" y="286" />
+      </biodi:edge>
+      <biodi:edge source="loonheffingeldersbenut">
+        <biodi:waypoints x="513" y="387" />
+        <biodi:waypoints x="523" y="335" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1ejkz6w" name="beschikbareloonheffing" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#maxloonheffing" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#loonheffingeldersbenut" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1cob0e9" expressionLanguage="groovy">
+      <text>maxloonheffing - loonheffingeldersbenut</text>
+    </literalExpression>
+  </decision>
+  <inputData id="loonheffingeldersbenut" name="Loonheffing elders benut">
+    <extensionElements>
+      <biodi:bounds x="445" y="387" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="loonheffing" name="Loonheffing">
+    <extensionElements>
+      <biodi:bounds x="300" y="82" width="180" height="80" />
+      <biodi:edge source="beschikbareloonheffing">
+        <biodi:waypoints x="475" y="255" />
+        <biodi:waypoints x="418" y="162" />
+      </biodi:edge>
+      <biodi:edge source="netto">
+        <biodi:waypoints x="297" y="254" />
+        <biodi:waypoints x="367" y="162" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0xc5rmh" name="loonheffing" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#beschikbareloonheffing" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#netto" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0t0j1eg" expressionLanguage="groovy">
+      <text>(netto - beschikbareloonheffing) * 0.576 - beschikbareloonheffing</text>
+    </literalExpression>
+  </decision>
+  <inputData id="maxpremieloon" name="Max Premieloon per jaar">
+    <extensionElements>
+      <biodi:bounds x="1137" y="505" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="bijdragezvw1" name="Bijdrage ZVW 1">
+    <extensionElements>
+      <biodi:bounds x="985" y="606" width="180" height="80" />
+      <biodi:edge source="betaal1">
+        <biodi:waypoints x="597" y="544" />
+        <biodi:waypoints x="994" y="606" />
+      </biodi:edge>
+      <biodi:edge source="dagenmaand1">
+        <biodi:waypoints x="722" y="548" />
+        <biodi:waypoints x="1071" y="606" />
+      </biodi:edge>
+      <biodi:edge source="maxpremieloon">
+        <biodi:waypoints x="1163" y="550" />
+        <biodi:waypoints x="1151" y="606" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1dkl7fr" name="bijdragezvw1" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#betaal1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#dagenmaand1" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#maxpremieloon" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1p8ywdh" expressionLanguage="groovy">
+      <text>betaal1 == 0 ? 0 : (maxpremieloon/12)*betaal1/dagenmaand1</text>
+    </literalExpression>
+  </decision>
+  <decision id="bijdragezvw2" name="Bijdrage ZVW 2">
+    <extensionElements>
+      <biodi:bounds x="1254" y="599" width="180" height="80" />
+      <biodi:edge source="betaal2">
+        <biodi:waypoints x="894" y="550" />
+        <biodi:waypoints x="1302" y="599" />
+      </biodi:edge>
+      <biodi:edge source="dagenmaand2">
+        <biodi:waypoints x="1006" y="552" />
+        <biodi:waypoints x="1380" y="599" />
+      </biodi:edge>
+      <biodi:edge source="maxpremieloon">
+        <biodi:waypoints x="1245" y="550" />
+        <biodi:waypoints x="1263" y="599" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1ffs5b9" name="bijdragezvw2" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#betaal2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#dagenmaand2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#maxpremieloon" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0fqj1y4" expressionLanguage="groovy">
+      <text>betaal2 == 0 ? 0 : (maxpremieloon/12)*betaal2/dagenmaand2</text>
+    </literalExpression>
+  </decision>
+  <decision id="bijdragezvw3" name="Bijdrage ZVW 3">
+    <extensionElements>
+      <biodi:bounds x="744" y="73" width="180" height="80" />
+      <biodi:edge source="maandenbijstand">
+        <biodi:waypoints x="824" y="183" />
+        <biodi:waypoints x="780" y="153" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1liaq6y" name="bijdragezvw3" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#maandenbijstand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0xqd68b" expressionLanguage="groovy">
+      <text>maandenbijstand * maxpremieloon/12 </text>
+    </literalExpression>
+  </decision>
+  <decision id="maxpremieloonuitkering" name="Max premieloon &#10;uitkeringsperiode">
+    <extensionElements>
+      <biodi:bounds x="895" y="-87" width="180" height="80" />
+      <biodi:edge source="bijdragezvw3">
+        <biodi:waypoints x="879" y="73" />
+        <biodi:waypoints x="901" y="-7" />
+      </biodi:edge>
+      <biodi:edge source="bijdragezvw2">
+        <biodi:waypoints x="1345" y="599" />
+        <biodi:waypoints x="970" y="-7" />
+      </biodi:edge>
+      <biodi:edge source="bijdragezvw1">
+        <biodi:waypoints x="1101" y="606" />
+        <biodi:waypoints x="991" y="-7" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0nu53vk" name="maxpremieloonuitkering" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#bijdragezvw3" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#bijdragezvw2" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#bijdragezvw1" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1r6h2lb" expressionLanguage="groovy">
+      <text>bijdragezvw1 + bijdragezvw2 + bijdragezvw3 &gt; maxpremieloon ? maxpremieloon : bijdragezvw1 + bijdragezvw2 + bijdragezvw3</text>
+    </literalExpression>
+  </decision>
+  <decision id="premieloonzvw" name="Premieloon ZVW">
+    <extensionElements>
+      <biodi:bounds x="149" y="-86" width="180" height="80" />
+      <biodi:edge source="loonheffing">
+        <biodi:waypoints x="360" y="82" />
+        <biodi:waypoints x="290" y="-6" />
+      </biodi:edge>
+      <biodi:edge source="netto">
+        <biodi:waypoints x="259" y="254" />
+        <biodi:waypoints x="219" y="-6" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_08x5bya" name="premieloonzvw" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#loonheffing" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#netto" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0s3q0yx" expressionLanguage="groovy">
+      <text>netto + loonheffing</text>
+    </literalExpression>
+  </decision>
+  <decision id="inkomensafhankelijkebijdrage" name="Inkomens afhankelijke bijdrage">
+    <extensionElements>
+      <biodi:bounds x="494" y="-87" width="180" height="80" />
+      <biodi:edge source="premieloonzvw">
+        <biodi:waypoints x="329" y="-46" />
+        <biodi:waypoints x="494" y="-46" />
+      </biodi:edge>
+      <biodi:edge source="maxpremieloonuitkering">
+        <biodi:waypoints x="895" y="-42" />
+        <biodi:waypoints x="674" y="-30" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0v2hbt8" name="inkomensafhankelijkebijdrage" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#premieloonzvw" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#maxpremieloonuitkering" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_0ui1ny0" expressionLanguage="groovy">
+      <text>0.069 * Math.min(premieloonzvw, maxpremieloonuitkering)</text>
+    </literalExpression>
+  </decision>
+</definitions>

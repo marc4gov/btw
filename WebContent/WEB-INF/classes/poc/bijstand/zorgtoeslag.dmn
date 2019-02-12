@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_08v8hd1" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="zorgtoeslag" name="Zorgtoeslag">
+    <extensionElements>
+      <biodi:bounds x="200" y="200" width="180" height="80" />
+      <biodi:edge source="inkomen">
+        <biodi:waypoints x="294" y="344" />
+        <biodi:waypoints x="298" y="280" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#inkomen" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_1" hitPolicy="FIRST">
+      <input id="input_1" label="Inkomen">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>inkomen</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Maandbedrag zonder toeslagpartner" name="maandbedrag-zt" typeRef="integer" />
+      <output id="OutputClause_1p1j6ke" label="Maandbedrag met toeslagpartner" name="maandbedrag-mt" typeRef="integer" />
+      <rule id="DecisionRule_0af4nw5">
+        <inputEntry id="UnaryTests_15xyxrt">
+          <text>&lt;= 20500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p04kqq">
+          <text>94</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n65t8w">
+          <text>176</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fd8k1g">
+        <inputEntry id="UnaryTests_1f7b40y">
+          <text>&lt;= 21000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lj4juq">
+          <text>88</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qv7xqb">
+          <text>170</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xnyoii">
+        <inputEntry id="UnaryTests_0mn7e51">
+          <text>&lt;= 21500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hvv7ah">
+          <text>83</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hemwcz">
+          <text>164</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mstj9w">
+        <inputEntry id="UnaryTests_1qhgqqo">
+          <text>&lt;= 22000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jioi4z">
+          <text>77</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g1a1zi">
+          <text>159</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xrf46j">
+        <inputEntry id="UnaryTests_1siki11">
+          <text>&lt;= 22500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cn2n1r">
+          <text>71</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sombaj">
+          <text>153</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pp3kr6">
+        <inputEntry id="UnaryTests_01p8x4k">
+          <text>&lt;= 23000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10wsifw">
+          <text>66</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yb3ktq">
+          <text>148</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18rqarj">
+        <inputEntry id="UnaryTests_1brtu1y">
+          <text>&lt;= 23500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mr2vxh">
+          <text>60</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02yyboj">
+          <text>142</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0p1c51v">
+        <inputEntry id="UnaryTests_1t0alzx">
+          <text>&lt;= 24000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l91kbi">
+          <text>55</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dyakmr">
+          <text>136</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h2ing4">
+        <inputEntry id="UnaryTests_1gb0nfj">
+          <text>&lt;= 24500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14vateb">
+          <text>49</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k0qxoo">
+          <text>131</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ai8gqp">
+        <inputEntry id="UnaryTests_0q0nyv4">
+          <text>&lt;= 25000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gbobzx">
+          <text>43</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j2e2c4">
+          <text>125</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_169py2v">
+        <inputEntry id="UnaryTests_0nn3rk1">
+          <text>&lt;= 25500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05d0iz3">
+          <text>38</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rl0ix7">
+          <text>119</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ybmp42">
+        <inputEntry id="UnaryTests_19md2av">
+          <text>&lt;= 26000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lvargf">
+          <text>32</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sin8b0">
+          <text>114</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ekjkq8">
+        <inputEntry id="UnaryTests_0ocq5qq">
+          <text>&lt;= 26500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wn8a56">
+          <text>26</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07hdtip">
+          <text>108</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0h6xig8">
+        <inputEntry id="UnaryTests_1thfies">
+          <text>&lt;= 27000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qi158z">
+          <text>21</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f8ocfx">
+          <text>103</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0x6vhte">
+        <inputEntry id="UnaryTests_1jn6yej">
+          <text>&lt;= 27500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ngbwg7">
+          <text>15</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_130istg">
+          <text>97</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ckzq0a">
+        <inputEntry id="UnaryTests_0g3zhah">
+          <text>&lt;= 28000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i2fh46">
+          <text>10</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yovfzq">
+          <text>91</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1lioqzi">
+        <inputEntry id="UnaryTests_1qsxsit">
+          <text>&lt;= 28500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f8aecl">
+          <text>4</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yz5880">
+          <text>86</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vl6jzf">
+        <inputEntry id="UnaryTests_0aunjo8">
+          <text>&lt;= 29000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l8a7ji">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kul4uj">
+          <text>80</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r798vi">
+        <inputEntry id="UnaryTests_13y97vf">
+          <text>&lt;= 29500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xqhqnn">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13jqomx">
+          <text>74</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1usas8w">
+        <inputEntry id="UnaryTests_1cw0sh7">
+          <text>&lt;= 30000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jz5pv3">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06324ac">
+          <text>69</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06yuhma">
+        <inputEntry id="UnaryTests_02cctjc">
+          <text>&lt;= 30500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09vx78o">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l7pufi">
+          <text>63</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1llet2u">
+        <inputEntry id="UnaryTests_0ue4ckt">
+          <text>&lt;= 31000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w8xo0f">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zet0zc">
+          <text>58</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09ukkfv">
+        <inputEntry id="UnaryTests_1pktnhr">
+          <text>&lt;= 31500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14fnl3d">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1545r3w">
+          <text>52</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07mbtjg">
+        <inputEntry id="UnaryTests_1pbvdew">
+          <text>&lt;= 32000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1psl7gv">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0plo2df">
+          <text>46</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18595lw">
+        <inputEntry id="UnaryTests_0ww0kg7">
+          <text>&lt;= 32500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s5dh21">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08lx761">
+          <text>41</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wjltqv">
+        <inputEntry id="UnaryTests_1dnei7z">
+          <text>&lt;= 33000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v7wnxw">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hoh5wj">
+          <text>35</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03brpdl">
+        <inputEntry id="UnaryTests_1jmccxu">
+          <text>&lt;= 33500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mbtjvi">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wy3mn0">
+          <text>30</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zekc89">
+        <inputEntry id="UnaryTests_1ufevij">
+          <text>&lt;= 34000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ghb67q">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m890z7">
+          <text>24</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rguehn">
+        <inputEntry id="UnaryTests_159crm2">
+          <text>&lt;= 34500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07kiftc">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_090okwy">
+          <text>18</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1es73z6">
+        <inputEntry id="UnaryTests_0iqate0">
+          <text>&lt;= 35000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0awp7s5">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pa1p1c">
+          <text>13</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w2hyo0">
+        <inputEntry id="UnaryTests_00rzmpp">
+          <text>&lt;= 35500</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1540kgd">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v4tks0">
+          <text>7</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18gkb69">
+        <inputEntry id="UnaryTests_1o3ep2j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c9y6za">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h2whf9">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="inkomen" name="Inkomen">
+    <extensionElements>
+      <biodi:bounds x="229" y="344" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+</definitions>

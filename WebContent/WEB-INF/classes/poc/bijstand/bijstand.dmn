@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_19hro83" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="nettodeelwelVT" name="Netto deel wel VT">
+    <extensionElements>
+      <biodi:bounds x="888" y="109" width="180" height="80" />
+      <biodi:edge source="nettodeelgeen">
+        <biodi:waypoints x="776" y="291" />
+        <biodi:waypoints x="890" y="189" />
+      </biodi:edge>
+      <biodi:edge source="nett">
+        <biodi:waypoints x="818" y="155" />
+        <biodi:waypoints x="888" y="153" />
+      </biodi:edge>
+      <biodi:edge source="nettobijstand">
+        <biodi:waypoints x="818" y="159" />
+        <biodi:waypoints x="888" y="162" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="776" y="291" />
+        <biodi:waypoints x="890" y="189" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_1rbx0w3" name="nettodeelwelVT" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nett" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettobijstand" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_09utud4" expressionLanguage="groovy">
+      <text>nettobijstand - nettodeelgeenVT</text>
+    </literalExpression>
+  </decision>
+  <inputData id="vakantiegeldwerkgever" name="Vakantiegeld Werkgever">
+    <extensionElements>
+      <biodi:bounds x="1165" y="279" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="VTbijstand" name="VT Bijstand">
+    <extensionElements>
+      <biodi:bounds x="689" y="550" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="inkomstenVT" name="Inkomsten inclusief VT">
+    <extensionElements>
+      <biodi:bounds x="893" y="264" width="180" height="80" />
+      <biodi:edge source="nettodeelwelVT">
+        <biodi:waypoints x="970" y="189" />
+        <biodi:waypoints x="956" y="264" />
+      </biodi:edge>
+      <biodi:edge source="vakantiegeldwerkgever">
+        <biodi:waypoints x="1165" y="301" />
+        <biodi:waypoints x="1073" y="300" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeen">
+        <biodi:waypoints x="812" y="313" />
+        <biodi:waypoints x="893" y="311" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="812" y="314" />
+        <biodi:waypoints x="893" y="315" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0sarq6z" name="inkomstenVT" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#nettodeelwelVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#vakantiegeldwerkgever" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1autl5o" expressionLanguage="groovy">
+      <text>nettodeelwelVT + vakantiegeldwerkgever</text>
+    </literalExpression>
+  </decision>
+  <decision id="tekorten" name="Te korten inkomsten">
+    <extensionElements>
+      <biodi:bounds x="899" y="401" width="180" height="80" />
+      <biodi:edge source="inkomstenVT">
+        <biodi:waypoints x="981" y="344" />
+        <biodi:waypoints x="978" y="401" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeen">
+        <biodi:waypoints x="780" y="336" />
+        <biodi:waypoints x="899" y="422" />
+      </biodi:edge>
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="777" y="336" />
+        <biodi:waypoints x="899" y="434" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_07ls1c2" name="tekorten" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#inkomstenVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeen" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#nettodeelgeenVT" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1o99lgl" expressionLanguage="groovy">
+      <text>nettodeelgeenVT + inkomstenVT</text>
+    </literalExpression>
+  </decision>
+  <inputData id="bijstandnorm" name="Bijstand norm">
+    <extensionElements>
+      <biodi:bounds x="1187" y="555" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <decision id="aanvbijstandVT" name="Aanvullende bijstand&#10;inclusief vakantiegeld">
+    <extensionElements>
+      <biodi:bounds x="1143" y="451" width="180" height="80" />
+      <biodi:edge source="Bijstandnorm">
+        <biodi:waypoints x="1263" y="555" />
+        <biodi:waypoints x="1153" y="531" />
+      </biodi:edge>
+      <biodi:edge source="bijstandnorm">
+        <biodi:waypoints x="1250" y="555" />
+        <biodi:waypoints x="1250" y="531" />
+      </biodi:edge>
+      <biodi:edge source="tekorten">
+        <biodi:waypoints x="1079" y="467" />
+        <biodi:waypoints x="1143" y="485" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0e9d1i3" name="aanvbijstandVT" typeRef="double" />
+    <informationRequirement>
+      <requiredInput href="#Bijstandnorm" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#bijstandnorm" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#tekorten" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_14ajbkv" expressionLanguage="groovy">
+      <text>bijstandnorm - tekorten</text>
+    </literalExpression>
+  </decision>
+  <decision id="aanvullendebijstand" name="Aanvullende bijstand&#10;reservering vakantiegeld">
+    <extensionElements>
+      <biodi:bounds x="903" y="524" width="180" height="80" />
+      <biodi:edge source="aanvbijstandVT">
+        <biodi:waypoints x="1143" y="518" />
+        <biodi:waypoints x="1083" y="536" />
+      </biodi:edge>
+      <biodi:edge source="VTbijstand">
+        <biodi:waypoints x="814" y="573" />
+        <biodi:waypoints x="903" y="576" />
+      </biodi:edge>
+    </extensionElements>
+    <variable id="InformationItem_0bx6x3w" name="aanvullendebijstand" typeRef="double" />
+    <informationRequirement>
+      <requiredDecision href="#aanvbijstandVT" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#VTbijstand" />
+    </informationRequirement>
+    <literalExpression id="LiteralExpression_1gt2pac" expressionLanguage="groovy">
+      <text>aanvbijstandVT * (1-VTbijstand)</text>
+    </literalExpression>
+  </decision>
+  <decision id="VTtabel" name="Vakantietoeslag tabel">
+    <extensionElements>
+      <biodi:bounds x="1133" y="109" width="180" height="80" />
+      <biodi:edge source="nettodeelwelVT">
+        <biodi:waypoints x="1068" y="149" />
+        <biodi:waypoints x="1133" y="149" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#nettodeelwelVT" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0xkzw2q" hitPolicy="FIRST">
+      <input id="InputClause_1fy4wql" label="Inkomsten met reservering VT werkgever">
+        <inputExpression id="LiteralExpression_1qw0kaz" typeRef="double">
+          <text>nettodeelwelVT</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0qe6241" label="Vakantietoeslag percentage" name="VTpercentage" typeRef="double" />
+      <output id="OutputClause_0k8eazz" label="Correctiefactor" name="correctiefactor" typeRef="double" />
+      <rule id="DecisionRule_11jmcol">
+        <inputEntry id="UnaryTests_0t9hheo">
+          <text>&lt; 547.76</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfft15">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y91wt9">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sp9r6r">
+        <inputEntry id="UnaryTests_0qd2uxu">
+          <text>&lt; 591.56</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ck2w3o">
+          <text>0.0521</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ue7id">
+          <text>0.0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kmqrir">
+        <inputEntry id="UnaryTests_129d7u8">
+          <text>&lt; 732.34</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16y2oot">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_062lk78">
+          <text>-16.51</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1j509k6">
+        <inputEntry id="UnaryTests_1i158mt">
+          <text>&lt; 1436.70</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfddou">
+          <text>0.08</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07fhotg">
+          <text>0.91</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0821bhp">
+        <inputEntry id="UnaryTests_0iozhub">
+          <text>&gt;= 1436.70</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vbxtxb">
+          <text>0.0493</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0efo3f5">
+          <text>0.56</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="nettodeelgeenVT" name="Netto deel geen VT">
+    <extensionElements>
+      <biodi:bounds x="687" y="291" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="nettobijstand" name="Netto inkomsten voor Bijstand">
+    <extensionElements>
+      <biodi:bounds x="693" y="134" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <association id="Association_1s50ygn">
+    <extensionElements>
+      <biodi:edge source="InputData_1klr5cq">
+        <biodi:waypoints x="295" y="0" />
+        <biodi:waypoints x="314" y="-45" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1klr5cq" />
+    <targetRef href="#TextAnnotation_1pozktp" />
+  </association>
+  <association id="Association_1nsirp5">
+    <extensionElements>
+      <biodi:edge source="loonheffingdeelVT">
+        <biodi:waypoints x="769" y="434" />
+        <biodi:waypoints x="776" y="449" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#loonheffingdeelVT" />
+    <targetRef href="#TextAnnotation_1agz7s0" />
+  </association>
+  <association id="Association_1oq19o9">
+    <extensionElements>
+      <biodi:edge source="InputData_1dph62d">
+        <biodi:waypoints x="522" y="-4" />
+        <biodi:waypoints x="585" y="-26" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#InputData_1dph62d" />
+    <targetRef href="#TextAnnotation_06d24n4" />
+  </association>
+  <textAnnotation id="TextAnnotation_17lv95q">
+    <extensionElements>
+      <biodi:bounds x="1332" y="202" width="100" height="80" />
+    </extensionElements>
+    <text>vanuit vakantietoeslag tabel</text>
+  </textAnnotation>
+  <association id="Association_0jc174a">
+    <extensionElements>
+      <biodi:edge source="vakantiegeldwerkgever">
+        <biodi:waypoints x="1287" y="279" />
+        <biodi:waypoints x="1332" y="261" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#vakantiegeldwerkgever" />
+    <targetRef href="#TextAnnotation_17lv95q" />
+  </association>
+  <textAnnotation id="TextAnnotation_0lif9m7">
+    <extensionElements>
+      <biodi:bounds x="520" y="202" width="100" height="80" />
+    </extensionElements>
+    <text>vanuit looncomponenten.dmn</text>
+  </textAnnotation>
+  <association id="Association_1ioee4x">
+    <extensionElements>
+      <biodi:edge source="nettodeelgeenVT">
+        <biodi:waypoints x="693" y="291" />
+        <biodi:waypoints x="620" y="262" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#nettodeelgeenVT" />
+    <targetRef href="#TextAnnotation_0lif9m7" />
+  </association>
+  <association id="Association_1as84af">
+    <extensionElements>
+      <biodi:edge source="nettobijstand">
+        <biodi:waypoints x="708" y="179" />
+        <biodi:waypoints x="620" y="219" />
+      </biodi:edge>
+    </extensionElements>
+    <sourceRef href="#nettobijstand" />
+    <targetRef href="#TextAnnotation_0lif9m7" />
+  </association>
+</definitions>
